@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>靜磁場 6-1 / 6-7 / 6-10 · 課文翻譯與測驗【PRO 100題】</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+  :root{
+    --bg:#05070f; --bg-2:#0a1024; --panel:#0c1330; --panel-2:#101a3c;
+    --border:#1d2a55; --border-glow:#31407a; --line:#19234a;
+    --cyan:#2dd4ff; --cyan-soft:#86e9ff; --cyan-dim:rgba(45,212,255,.10);
+    --violet:#a78bfa; --gold:#fbbf24;
+    --green:#34d399; --red:#fb7185; --amber:#fbbf24;
+    --text:#e9eefb; --muted:#93a3c9; --muted-2:#647199;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Noto Sans TC",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+    background-image:
+      radial-gradient(1100px 520px at 50% -8%, rgba(45,212,255,.10), transparent 60%),
+      radial-gradient(800px 400px at 88% 4%, rgba(167,139,250,.07), transparent 60%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 18px 80px}
+  header{position:relative;overflow:hidden;padding:34px 0 26px;text-align:center}
+  .field-bg{position:absolute;inset:-40px 0 auto;height:340px;z-index:0;opacity:.5;pointer-events:none}
+  .field-bg svg{width:100%;height:100%}
+  .fline{fill:none;stroke:var(--cyan);stroke-width:1.1;opacity:.22;
+    stroke-dasharray:7 11;animation:flow 9s linear infinite}
+  .fline:nth-child(2){opacity:.16;animation-duration:12s}
+  .fline:nth-child(3){opacity:.12;animation-duration:15s}
+  .fline:nth-child(4){opacity:.09;animation-duration:18s}
+  .fline:nth-child(5){opacity:.06;animation-duration:22s}
+  .pole{fill:var(--cyan);opacity:.5}
+  @keyframes flow{to{stroke-dashoffset:-180}}
+  header .inner{position:relative;z-index:1}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.32em;
+    color:var(--cyan-soft);text-transform:uppercase;margin-bottom:10px;opacity:.85}
+  h1{font-family:"Orbitron",sans-serif;font-weight:900;letter-spacing:.04em;
+    font-size:clamp(2.1rem,7vw,3.1rem);margin:0;line-height:1.05;
+    text-shadow:0 0 26px rgba(45,212,255,.45)}
+  .subtitle{margin:10px 0 0;color:var(--muted);font-size:.95rem}
+  .scope{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .scope span{font-family:var(--mono);font-size:.74rem;padding:5px 11px;border-radius:999px;
+    border:1px solid var(--border);background:rgba(13,21,48,.6);color:var(--cyan-soft)}
+  .tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;
+    padding:10px 0 12px;background:linear-gradient(var(--bg) 72%,rgba(5,7,15,0));
+    backdrop-filter:blur(2px)}
+  .tab{flex:1;font-family:"Orbitron",sans-serif;font-weight:700;letter-spacing:.05em;
+    font-size:.86rem;padding:13px 10px;border-radius:13px;cursor:pointer;
+    border:1px solid var(--border);background:var(--panel);color:var(--muted);
+    transition:all .18s ease;display:flex;align-items:center;justify-content:center;gap:8px}
+  .tab .zh{font-family:"Noto Sans TC",sans-serif}
+  .tab:hover{border-color:var(--border-glow);color:var(--cyan-soft)}
+  .tab.active{color:#04121a;background:linear-gradient(135deg,var(--cyan),#67e8f9);
+    border-color:var(--cyan);box-shadow:0 0 22px rgba(45,212,255,.4)}
+  .panel{display:none;animation:fade .25s ease}
+  .panel.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .lesson{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:24px 22px;margin:18px 0}
+  .lesson-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .lesson-num{font-family:"Orbitron",sans-serif;font-weight:900;font-size:1.5rem;color:#04121a;
+    background:linear-gradient(135deg,var(--cyan),#67e8f9);padding:6px 12px;border-radius:11px;line-height:1;box-shadow:0 0 18px rgba(45,212,255,.35)}
+  .lesson-head.v6-7 .lesson-num{background:linear-gradient(135deg,var(--violet),#c4b5fd);box-shadow:0 0 18px rgba(167,139,250,.35)}
+  .lesson-head.v6-10 .lesson-num{background:linear-gradient(135deg,var(--gold),#fde68a);box-shadow:0 0 18px rgba(251,191,36,.3)}
+  .lesson-head h2{margin:0;font-size:1.25rem;font-weight:700}
+  .lesson-head h2 .en{display:block;font-size:.82rem;color:var(--muted);font-weight:500;font-family:var(--mono);letter-spacing:.02em;margin-top:3px}
+  .lesson p{margin:14px 0;color:#dbe3f7}
+  .lesson .term{color:var(--cyan-soft)}
+  .lesson h3{font-size:.95rem;color:var(--cyan-soft);font-family:var(--mono);letter-spacing:.04em;margin:22px 0 6px;text-transform:uppercase}
+  .example{border-left:2px solid var(--violet);background:rgba(167,139,250,.06);padding:4px 16px;margin:18px 0;border-radius:0 12px 12px 0}
+  .example .extag{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.78rem;color:var(--violet);letter-spacing:.06em;margin-top:14px;display:inline-block}
+  .note{font-size:.86rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px;margin-top:18px}
+  .eq{overflow-x:auto;overflow-y:hidden;padding:6px 2px;margin:6px 0 4px;scrollbar-width:thin}
+  .eq::-webkit-scrollbar{height:6px}
+  .eq::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+  .katex{font-size:1.05em}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:26px 22px;margin:18px 0}
+  .q-intro h2{font-family:"Orbitron",sans-serif;font-weight:700;font-size:1.3rem;margin:0 0 4px}
+  .q-intro .lead{color:var(--muted);margin:0 0 20px}
+  .rules{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px}
+  .rules li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;font-size:.92rem}
+  .rules .ic{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--cyan-dim);color:var(--cyan);font-size:.9rem}
+  .btn{font-family:"Orbitron",sans-serif;font-weight:700;letter-spacing:.04em;border:none;border-radius:13px;padding:15px 22px;cursor:pointer;font-size:.92rem;transition:transform .12s ease,box-shadow .18s ease,background .18s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),#67e8f9);color:#04121a;box-shadow:0 0 22px rgba(45,212,255,.35);width:100%}
+  .btn-primary:hover{box-shadow:0 0 30px rgba(45,212,255,.55)}
+  .btn-ghost{background:var(--panel-2);color:var(--cyan-soft);border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--cyan)}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn-row .btn{flex:1;min-width:130px}
+  .qbar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .qcount{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.9rem;color:var(--cyan-soft)}
+  .qexit{font-size:.8rem;color:var(--muted-2);cursor:pointer;background:none;border:none;font-family:inherit}
+  .qexit:hover{color:var(--red)}
+  .progress{height:7px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-bottom:22px;border:1px solid var(--line)}
+  .progress > i{display:block;height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--cyan),#67e8f9);transition:width .35s ease;box-shadow:0 0 12px rgba(45,212,255,.6)}
+  .qtag{font-family:var(--mono);font-size:.7rem;padding:4px 9px;border-radius:7px;letter-spacing:.04em;display:inline-flex;gap:6px;align-items:center}
+  .qtag.s1{color:var(--cyan);background:var(--cyan-dim)}
+  .qtag.s2{color:var(--violet);background:rgba(167,139,250,.12)}
+  .qtag.s3{color:var(--gold);background:rgba(251,191,36,.12)}
+  .qtype{font-family:var(--mono);font-size:.7rem;color:var(--muted-2);margin-left:8px}
+  .qtext{font-size:1.16rem;font-weight:500;margin:14px 0 4px;line-height:1.6}
+  .qtext-en{color:var(--muted);font-size:.9rem;margin:0 0 20px;font-style:italic}
+  .qtext sub,.qtext sup,.opt sub,.opt sup,.rev sub,.rev sup,.bq sub,.bq sup{font-style:normal}
+  .opts{display:grid;gap:11px}
+  .opt{display:flex;gap:13px;align-items:center;text-align:left;width:100%;padding:15px 16px;border-radius:13px;cursor:pointer;font-size:.97rem;color:var(--text);background:var(--bg-2);border:1.5px solid var(--line);transition:all .15s ease;font-family:inherit}
+  .opt:hover{border-color:var(--border-glow);background:var(--panel-2)}
+  .opt .key{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:"Orbitron",sans-serif;font-weight:700;font-size:.85rem;background:var(--panel);color:var(--cyan-soft);border:1px solid var(--border)}
+  .opt .body{display:flex;flex-direction:column;gap:1px}
+  .opt .opt-en{font-size:.8rem;color:var(--muted-2)}
+  .opt.sel{border-color:var(--cyan);background:rgba(45,212,255,.10);box-shadow:0 0 16px rgba(45,212,255,.18)}
+  .opt.sel .key{background:var(--cyan);color:#04121a;border-color:var(--cyan)}
+  .qnav{display:flex;gap:10px;margin-top:22px}
+  .qnav .btn{flex:1}
+  .btn-prev{background:var(--panel-2);color:var(--muted);border:1px solid var(--border)}
+  .btn-prev:hover{color:var(--cyan-soft);border-color:var(--cyan)}
+  .btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
+  .score-wrap{text-align:center;padding:6px 0 8px}
+  .ring{width:168px;height:168px;border-radius:50%;margin:8px auto 6px;display:grid;place-items:center;background:conic-gradient(var(--rc,var(--cyan)) calc(var(--p,0)*1%), var(--bg-2) 0);box-shadow:0 0 30px rgba(45,212,255,.25)}
+  .ring .inner{width:134px;height:134px;border-radius:50%;background:var(--panel);display:grid;place-items:center;border:1px solid var(--line)}
+  .ring .num{font-family:"Orbitron",sans-serif;font-weight:900;font-size:2.5rem;line-height:1;color:#fff}
+  .ring .den{font-size:.9rem;color:var(--muted);margin-top:2px}
+  .pct{font-family:"Orbitron",sans-serif;font-weight:700;font-size:1.1rem;margin-top:6px}
+  .grade{margin:8px auto 4px;font-size:1.02rem;font-weight:500;max-width:430px}
+  .rev-title{font-family:"Orbitron",sans-serif;font-weight:700;font-size:1rem;letter-spacing:.03em;margin:26px 0 4px;display:flex;align-items:center;gap:9px}
+  .rev-title .cnt{font-family:var(--mono);font-size:.78rem;color:var(--red);background:rgba(251,113,133,.12);padding:3px 9px;border-radius:7px}
+  .allright{text-align:center;color:var(--green);padding:18px;background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.25);border-radius:13px;margin-top:18px}
+  .rev{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:13px 0;border-left:3px solid var(--red)}
+  .rev .rq{font-weight:500;margin:6px 0 3px;line-height:1.55}
+  .rev .rq-en{font-size:.82rem;color:var(--muted-2);font-style:italic;margin:0 0 12px}
+  .rev .ans-line{display:flex;gap:9px;align-items:baseline;font-size:.9rem;margin:5px 0;flex-wrap:wrap}
+  .rev .lab{font-family:var(--mono);font-size:.72rem;flex:none;width:64px;color:var(--muted-2)}
+  .rev .wrong{color:var(--red)}
+  .rev .right{color:var(--green)}
+  .rev .exp{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:.9rem;color:#cdd8f2;line-height:1.65}
+  .rev .exp b{color:var(--cyan-soft);font-weight:500}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
+  .filt{font-family:var(--mono);font-size:.78rem;padding:8px 14px;border-radius:99px;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--muted);transition:all .15s}
+  .filt:hover{color:var(--cyan-soft);border-color:var(--border-glow)}
+  .filt.on{background:var(--cyan);color:#04121a;border-color:var(--cyan)}
+  .bq{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin:12px 0}
+  .bq .bq-head{display:flex;gap:9px;align-items:center;margin-bottom:9px}
+  .bq .bq-n{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.78rem;color:var(--muted-2)}
+  .bq .rq{font-weight:500;line-height:1.55;margin:2px 0}
+  .bq .rq-en{font-size:.82rem;color:var(--muted-2);font-style:italic;margin:0 0 11px}
+  .bopt{display:flex;gap:9px;align-items:center;padding:9px 12px;border-radius:10px;margin:6px 0;font-size:.9rem;background:var(--panel);border:1px solid transparent}
+  .bopt .bk{font-family:"Orbitron",sans-serif;font-weight:700;font-size:.78rem;color:var(--muted-2);flex:none}
+  .bopt.cor{background:rgba(52,211,153,.10);border-color:rgba(52,211,153,.4);color:var(--green)}
+  .bopt.cor .bk{color:var(--green)}
+  .bopt .tick{margin-left:auto;color:var(--green)}
+  .bq .exp{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);font-size:.88rem;color:#cdd8f2;line-height:1.6}
+  .bq .exp b{color:var(--cyan-soft);font-weight:500}
+  footer{text-align:center;color:var(--muted-2);font-size:.78rem;margin-top:34px;font-family:var(--mono);letter-spacing:.04em}
+  @media (max-width:520px){
+    body{font-size:15px}
+    .lesson,.card{padding:20px 15px}
+    .opt{padding:13px 13px}
+    .ring{width:150px;height:150px}.ring .inner{width:120px;height:120px}.ring .num{font-size:2.2rem}
+  }
+  @media (prefers-reduced-motion:reduce){.fline{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="field-bg" aria-hidden="true">
+      <svg viewBox="0 0 880 300" preserveAspectRatio="xMidYMid slice">
+        <path class="fline" d="M440,46 C480,46 480,254 440,254 C400,254 400,46 440,46 Z"/>
+        <path class="fline" d="M440,46 C540,52 540,248 440,254 C340,248 340,52 440,46 Z"/>
+        <path class="fline" d="M440,46 C610,60 610,240 440,254 C270,240 270,60 440,46 Z"/>
+        <path class="fline" d="M440,46 C690,72 690,228 440,254 C190,228 190,72 440,46 Z"/>
+        <path class="fline" d="M440,46 C775,86 775,214 440,254 C105,214 105,86 440,46 Z"/>
+        <circle class="pole" cx="440" cy="46" r="4.5"/>
+        <circle class="pole" cx="440" cy="254" r="4.5"/>
+      </svg>
+    </div>
+    <div class="inner">
+      <div class="eyebrow">Cheng &middot; Field &amp; Wave Electromagnetics &middot; Ch.6</div>
+      <h1>靜磁場<sup style="font-family:var(--mono);font-size:.30em;color:var(--gold);letter-spacing:.12em;vertical-align:super;margin-left:.35em;text-shadow:0 0 12px rgba(251,191,36,.5)">PRO</sup></h1>
+      <p class="subtitle">Static Magnetic Fields — 課文翻譯 &amp; 隨堂測驗（100 題進階版）</p>
+      <div class="scope"><span>6-1 緒論</span><span>6-7 磁場強度與相對導磁係數</span><span>6-10 邊界條件</span></div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="study">📖 <span class="zh">課文翻譯</span></button>
+    <button class="tab" data-tab="quiz">📝 <span class="zh">隨堂測驗</span></button>
+  </nav>
+
+  <section id="study" class="panel show">
+
+    <article class="lesson">
+      <div class="lesson-head v6-1"><span class="lesson-num">6-1</span>
+        <h2>緒論<span class="en">Introduction</span></h2></div>
+      <p>第 3 章我們處理的是靜止電荷所產生的<strong>靜電場</strong>。我們看到，在自由空間（free space）中研究靜電學時，<span class="term">電場強度（electric field intensity）</span>E 是唯一需要的基本向量場量。在物質介質（material medium）中，為了描述<strong>極化（polarization）</strong>的效應，方便再定義第二個向量場量——<span class="term">電通密度（electric flux density）</span>，又稱電位移（electric displacement）D。下面兩個方程式構成靜電模型的基礎：</p>
+      <div class="eq">\[ \nabla \cdot \mathbf{D} = \rho \tag{6-1} \]</div>
+      <div class="eq">\[ \nabla \times \mathbf{E} = 0 \tag{6-2} \]</div>
+      <p>介質的電性質決定 D 與 E 之間的關係。若介質為線性（linear）且等向（isotropic），則有簡單的<strong>本構關係（constitutive relation）</strong>\( \mathbf{D} = \epsilon \mathbf{E} \)，其中介電係數（permittivity）\( \epsilon \) 為一純量。</p>
+      <p>當把小測試電荷（test charge）q 置於電場 E 中，它會受到一個<strong>電力（electric force）</strong>\( \mathbf{F}_e \)，其大小是 q 位置的函數：</p>
+      <div class="eq">\[ \mathbf{F}_e = q\mathbf{E} \quad (\text{N}) \tag{6-3} \]</div>
+      <p>當測試電荷在磁場中運動時（磁場稍後定義），實驗顯示它會再受到另一個力 \( \mathbf{F}_m \)，具有下列特性：(1) \( \mathbf{F}_m \) 的大小與 q 成正比；(2) \( \mathbf{F}_m \) 在任一點的方向同時垂直於測試電荷的速度向量，也垂直於該點的某個固定方向；(3) \( \mathbf{F}_m \) 的大小也與速度在「垂直於該固定方向」的分量成正比。\( \mathbf{F}_m \) 稱為<span class="term">磁力（magnetic force）</span>，它<strong>無法</strong>用 E 或 D 來表示。\( \mathbf{F}_m \) 的這些特性，可藉由定義一個新的向量場量——<span class="term">磁通密度（magnetic flux density）</span>B 來描述，它同時指明了那個固定方向與比例常數。在 SI 單位制下，磁力可表示為：</p>
+      <div class="eq">\[ \mathbf{F}_m = q\,\mathbf{u} \times \mathbf{B} \quad (\text{N}) \tag{6-4} \]</div>
+      <p>其中 u（m/s）為速度向量，B 以「韋伯每平方公尺（Wb/m²）」或「特斯拉（tesla, T）」量度。作用在電荷 q 上的總<strong>電磁力（electromagnetic force）</strong>即為 \( \mathbf{F} = \mathbf{F}_e + \mathbf{F}_m \)，亦即：</p>
+      <div class="eq">\[ \mathbf{F} = q(\mathbf{E} + \mathbf{u} \times \mathbf{B}) \quad (\text{N}) \tag{6-5} \]</div>
+      <p>此式稱為<span class="term">勞侖茲力方程式（Lorentz's force equation）</span>，其正確性已被實驗無可置疑地確立。我們可把 \( \mathbf{F}_e/q \)（在 q 很小時）當作電場強度 E 的定義（如同 Eq. 3-2），並把 \( \mathbf{F}_m/q = \mathbf{u} \times \mathbf{B} \) 當作磁通密度 B 的定義關係式。或者，我們也可把勞侖茲力方程式當成電磁模型的一個<strong>基本假設（fundamental postulate）</strong>——它無法由其他假設推導出來。</p>
+      <p>我們將以兩個「指定 B 的散度與旋度」的假設，作為在自由空間研究靜磁場的起點。由 B 場的<strong>無散（solenoidal）</strong>特性，可定義一個向量磁位（vector magnetic potential），並證明它滿足向量型的卜瓦松方程式。接著推導必歐–沙伐定律（Biot–Savart law），用以求載流電路所產生的磁場。所假設的旋度關係會直接導出<strong>安培環路定律（Ampère's circuital law）</strong>，在具有對稱性時特別好用。磁性材料在磁場中的巨觀效應，可藉由定義磁化向量（magnetization vector）來研究。我們在此引入第四個向量場量——<span class="term">磁場強度（magnetic field intensity）</span>H；由 B 與 H 的關係定義材料的導磁係數（permeability），隨後討論磁路（magnetic circuits）與磁性材料的微觀行為。接著檢視 B 與 H 在兩種不同磁介質界面上的邊界條件（boundary conditions）、自感與互感（self- and mutual inductances），以及磁能、磁力與磁力矩。</p>
+      <p class="note">註：在 CGS 單位制中，一韋伯每平方公尺（或一特斯拉）等於 10⁴ 高斯（gauss）。地球磁場約為 ½ 高斯，即 0.5×10⁻⁴ T。（一韋伯等同於一伏特–秒。）</p>
+    </article>
+    <article class="lesson">
+      <div class="lesson-head v6-7"><span class="lesson-num">6-7</span>
+        <h2>磁場強度與相對導磁係數<span class="en">Magnetic Field Intensity and Relative Permeability</span></h2></div>
+      <p>由於外加磁場會同時造成磁性材料內部偶極矩（dipole moments）的排列，以及感應出磁矩（induced magnetic moment），我們預期在磁性材料存在下，合成的磁通密度會不同於自由空間中的值。磁化的巨觀效應可藉由把<strong>等效體電流密度（equivalent volume current density）</strong>\( \mathbf{J}_m \)（見 Eq. 6-62）併入基本旋度方程式 Eq. (6-7) 來研究。我們得到：</p>
+      <div class="eq">\[ \frac{1}{\mu_0}\nabla \times \mathbf{B} = \mathbf{J} + \mathbf{J}_m = \mathbf{J} + \nabla \times \mathbf{M} \]</div>
+      <p>或</p>
+      <div class="eq">\[ \nabla \times \left(\frac{\mathbf{B}}{\mu_0} - \mathbf{M}\right) = \mathbf{J} \tag{6-74} \]</div>
+      <p>現在我們定義一個新的基本場量——<span class="term">磁場強度（magnetic field intensity）</span>H，使得：</p>
+      <div class="eq">\[ \boxed{\;\mathbf{H} = \frac{\mathbf{B}}{\mu_0} - \mathbf{M} \quad (\text{A/m})\;} \tag{6-75} \]</div>
+      <p>使用向量 H 使我們能在任何介質中，寫出一個把磁場與<strong>自由電流（free currents）</strong>分布相關聯的旋度方程式；不必再明確處理磁化向量 M 或等效體電流密度 \( \mathbf{J}_m \)。結合 Eq. (6-74) 與 (6-75)，得到新方程式：</p>
+      <div class="eq">\[ \boxed{\;\nabla \times \mathbf{H} = \mathbf{J} \quad (\text{A/m}^2)\;} \tag{6-76} \]</div>
+      <p>其中 J（A/m²）是<strong>自由電流</strong>的體密度。Eq. (6-6) 與 (6-76) 是磁靜學的兩個基本控制微分方程式；介質的導磁係數<strong>並未明顯出現</strong>在這兩式中。</p>
+      <p>Eq. (6-76) 對應的積分形式，可對兩邊取純量面積分得到：</p>
+      <div class="eq">\[ \int_S (\nabla \times \mathbf{H}) \cdot d\mathbf{s} = \int_S \mathbf{J} \cdot d\mathbf{s} \tag{6-77} \]</div>
+      <p>或依史托克斯定理（Stokes's theorem）：</p>
+      <div class="eq">\[ \boxed{\;\oint_C \mathbf{H} \cdot d\boldsymbol{\ell} = I \quad (\text{A})\;} \tag{6-78} \]</div>
+      <p>其中 C 是包圍曲面 S 的封閉路徑（輪廓），I 是通過 S 的總自由電流。C 的繞行方向與電流 I 的方向遵守右手定則（right-hand rule）。Eq. (6-78) 是<strong>安培環路定律</strong>的另一種形式：它陳述「磁場強度沿任一封閉路徑的環量（circulation），等於通過該路徑所圍曲面的自由電流」。如 6-2 節所指出，安培環路定律在具有<strong>柱對稱（cylindrical symmetry）</strong>的電流問題中最有用——也就是存在一條環繞電流、且磁場沿其為定值的封閉路徑時。</p>
+      <p>當介質的磁性質為<strong>線性</strong>且<strong>等向</strong>時，磁化與磁場強度成正比：</p>
+      <div class="eq">\[ \mathbf{M} = \chi_m \mathbf{H} \tag{6-79} \]</div>
+      <p>其中 \( \chi_m \) 是一個<strong>無因次量</strong>，稱為<span class="term">磁化率（magnetic susceptibility）</span>。把 Eq. (6-79) 代入 Eq. (6-75) 得：</p>
+      <div class="eq">\[ \mathbf{B} = \mu_0(1 + \chi_m)\mathbf{H} = \mu_0\mu_r\mathbf{H} = \mu\mathbf{H} \quad (\text{Wb/m}^2) \tag{6-80a} \]</div>
+      <p>或</p>
+      <div class="eq">\[ \mathbf{H} = \frac{1}{\mu}\mathbf{B} \quad (\text{A/m}) \tag{6-80b} \]</div>
+      <p>其中</p>
+      <div class="eq">\[ \boxed{\;\mu_r = 1 + \chi_m = \frac{\mu}{\mu_0}\;} \tag{6-81} \]</div>
+      <p>是另一個無因次量，稱為介質的<span class="term">相對導磁係數（relative permeability）</span>。參數 \( \mu = \mu_0\mu_r \) 是介質的<strong>絕對導磁係數（absolute permeability）</strong>（有時就簡稱導磁係數），以 H/m 量度。\( \chi_m \)（因而 \( \mu_r \)）可以是空間座標的函數。對於<strong>簡單介質（simple medium）</strong>——即線性、等向且均勻（homogeneous）——\( \chi_m \) 與 \( \mu_r \) 為常數。</p>
+      <p>大多數材料的導磁係數都非常接近自由空間值 \( \mu_0 \)。對於鐵、鎳、鈷等<strong>鐵磁性（ferromagnetic）</strong>材料，\( \mu_r \) 可以非常大（50–5000，特殊合金甚至可達 10⁶ 以上）；其導磁係數不僅取決於 H 的大小，還取決於材料先前的歷史（亦即磁滯）。6-9 節對磁性材料的巨觀行為有一些定性討論。</p>
+    </article>
+    <article class="lesson">
+      <div class="lesson-head v6-10"><span class="lesson-num">6-10</span>
+        <h2>靜磁場的邊界條件<span class="en">Boundary Conditions for Magnetostatic Fields</span></h2></div>
+      <p>為了解決磁場存在於「不同物理性質介質」區域中的問題，必須研究 B 與 H 向量在不同介質界面上所必須滿足的條件（邊界條件）。沿用 3-9 節求靜電場邊界條件時所用的相似技巧，我們把兩個基本控制方程式 Eq. (6-82)〔即 \( \nabla \cdot \mathbf{B} = 0 \)〕與 Eq. (6-83)〔即 \( \nabla \times \mathbf{H} = \mathbf{J} \)〕，分別應用到一個跨越界面的<strong>小藥盒（pillbox）</strong>與<strong>小封閉路徑</strong>上，來推導磁靜邊界條件。</p>
+      <h3>法線分量：B 連續</h3>
+      <p>由 B 場的無散性（Eq. 6-82），參照過去的經驗，可直接得到「B 的法線分量（normal component）跨越界面連續」，亦即：</p>
+      <div class="eq">\[ \boxed{\;B_{1n} = B_{2n} \quad (\text{T})\;} \tag{6-107} \]</div>
+      <p>對於線性介質，\( \mathbf{B}_1 = \mu_1\mathbf{H}_1 \)、\( \mathbf{B}_2 = \mu_2\mathbf{H}_2 \)，Eq. (6-107) 變為：</p>
+      <div class="eq">\[ \mu_1 H_{1n} = \mu_2 H_{2n} \tag{6-108} \]</div>
+      <h3>切線分量：H 與面電流</h3>
+      <p>磁靜場切線分量（tangential components）的邊界條件，由 H 的旋度方程式積分形式 Eq. (6-78) 得到，此處重列：</p>
+      <div class="eq">\[ \oint_C \mathbf{H} \cdot d\boldsymbol{\ell} = I \tag{6-109} \]</div>
+      <p>取 Fig. 6-19 中的封閉路徑 abcda 作為輪廓 C。應用 Eq. (6-109)，並令 \( bc = da = \Delta h \) 趨近於零，得到：</p>
+      <div class="eq">\[ \oint_{abcda} \mathbf{H} \cdot d\boldsymbol{\ell} = \mathbf{H}_1 \cdot \Delta\mathbf{w} + \mathbf{H}_2 \cdot (-\Delta\mathbf{w}) = J_{sn}\,\Delta w \]</div>
+      <p>或</p>
+      <div class="eq">\[ \boxed{\;H_{1t} - H_{2t} = J_{sn} \quad (\text{A/m})\;} \tag{6-110} \]</div>
+      <p>其中 \( J_{sn} \) 是界面上「垂直於輪廓 C」的面電流密度（surface current density）。\( J_{sn} \) 的方向是：當右手手指順著路徑方向時，大拇指所指的方向。在 Fig. 6-19 中，對所選路徑而言 \( J_{sn} \) 的正方向為「射出紙面」。下式是切線 H 邊界條件更精簡的表示式，同時包含大小與方向的關係（見習題 P.6-30）：</p>
+      <div class="eq">\[ \boxed{\;\mathbf{a}_{n2} \times (\mathbf{H}_1 - \mathbf{H}_2) = \mathbf{J}_s \quad (\text{A/m})\;} \tag{6-111} \]</div>
+      <p>其中 \( \mathbf{a}_{n2} \) 是界面上「由介質 2 向外」的單位法線。因此，<strong>在存在自由面電流的界面上，H 場的切線分量不連續</strong>，不連續量由 Eq. (6-111) 決定。</p>
+      <p>當兩介質的電導率（conductivities）皆為有限值時，電流以體電流密度定義，界面上不存在自由面電流。故 \( \mathbf{J}_s = 0 \)，<strong>H 的切線分量在幾乎所有物理介質的界面上都連續</strong>；只有在假設界面為理想完美導體（perfect conductor）或超導體（superconductor）時才不連續。</p>
+      <div class="example">
+        <span class="extag">範例 6-12　磁場的折射</span>
+        <p>兩個導磁係數分別為 \( \mu_1 \)、\( \mu_2 \) 的磁介質具有共同界面（如 Fig. 6-20）。介質 1 中 \( P_1 \) 點的磁場強度大小為 \( H_1 \)，與法線夾角 \( \alpha_1 \)。求介質 2 中 \( P_2 \) 點磁場強度的大小與方向。</p>
+        <p><strong>解：</strong>待求量為 \( H_2 \) 與 \( \alpha_2 \)。B 法線分量連續（Eq. 6-108）要求：</p>
+        <div class="eq">\[ \mu_2 H_2 \cos\alpha_2 = \mu_1 H_1 \cos\alpha_1 \tag{6-112} \]</div>
+        <p>由於兩介質皆非完美導體，H 切線分量連續：</p>
+        <div class="eq">\[ H_2 \sin\alpha_2 = H_1 \sin\alpha_1 \tag{6-113} \]</div>
+        <p>以 Eq. (6-113) 除以 Eq. (6-112) 得：</p>
+        <div class="eq">\[ \boxed{\;\frac{\tan\alpha_2}{\tan\alpha_1} = \frac{\mu_2}{\mu_1}\;} \tag{6-114} \]</div>
+        <p>或 \( \alpha_2 = \tan^{-1}\!\left(\dfrac{\mu_2}{\mu_1}\tan\alpha_1\right) \) (6-115)，此式描述磁場的<strong>折射（refraction）性質</strong>。\( H_2 \) 的大小為 \( H_2 = \sqrt{H_{2t}^2 + H_{2n}^2} \)。由 Eq. (6-112) 與 (6-113) 得：</p>
+        <div class="eq">\[ H_2 = H_1\left[\sin^2\alpha_1 + \left(\frac{\mu_1}{\mu_2}\cos\alpha_1\right)^2\right]^{1/2} \tag{6-116} \]</div>
+        <p>三點說明：<strong>第一</strong>，Eq. (6-114) 與 (6-116) 分別與介電介質中電場的 Eq. (3-129) 與 (3-130) 完全類似，差別只在磁場情形用導磁係數（而非介電係數）。<strong>第二</strong>，若介質 1 為非磁性（如空氣）、介質 2 為鐵磁性（如鐵），則 \( \mu_2 \gg \mu_1 \)，由 Eq. (6-114)，\( \alpha_2 \) 將接近 90°。這表示對任何不接近零的入射角 \( \alpha_1 \)，鐵磁介質中的磁場幾乎平行於界面。<strong>第三</strong>，若介質 1 為鐵磁性、介質 2 為空氣（\( \mu_1 \gg \mu_2 \)），則 \( \alpha_2 \) 接近零；亦即若磁場源自鐵磁介質，磁通線將以幾乎垂直於界面的方向射入空氣中。</p>
+      </div>
+      <div class="example">
+        <span class="extag">範例 6-13　棒磁鐵的磁通線</span>
+        <p>畫出具有均勻軸向磁化 \( \mathbf{M} = \mathbf{a}_z M_0 \) 的圓柱形棒狀磁鐵內部與外部的磁通線。</p>
+        <p><strong>解：</strong>在範例 6-8 中我們指出，圓柱棒磁鐵的問題可用「面電流密度為 \( \mathbf{J}_{ms} = \mathbf{a}_\phi M_0 \) 的磁化電流片」取代（等效體電流密度為零）。在磁鐵內外任一點求 B 涉及難以計算的積分。我們利用範例 6-8 中「磁鐵軸上一點」的結果來粗略描繪 B 線。半徑 b、長度 L 的圓柱棒磁鐵截面如 Fig. 6-21。由 Eq. (6-65) 得：</p>
+        <div class="eq">\[ \mathbf{B}_{P_0} = \mathbf{a}_z\frac{\mu_0 M_0}{2}\left[\frac{L}{\sqrt{(L/2)^2 + b^2}}\right] \tag{6-117} \]</div>
+        <div class="eq">\[ \mathbf{B}_{P_1} = \mathbf{a}_z\frac{\mu_0 M_0}{2}\left[\frac{L}{\sqrt{L^2 + b^2}}\right] = \mathbf{B}_{P_1'} \tag{6-118} \]</div>
+        <p>由此可明顯看出 \( B_{P_1} = B_{P_1'} < B_{P_0} \)；亦即沿軸方向，磁鐵端面處的磁通密度小於中央處（磁通線在端面向外散開）。在離軸的點 B 具有徑向分量；B 線在端面不折射，且會自我封閉。在磁鐵側面有一面電流（Eq. 6-64）：</p>
+        <div class="eq">\[ \mathbf{J}_{ms} = \mathbf{a}_\phi M_0 \tag{6-119} \]</div>
+        <p>故依 Eq. (6-111)，B 的軸向分量跨側壁的改變量等於 \( \mu_0 M_0 \)。須特別注意：雖然在磁鐵<strong>外部</strong> \( \mathbf{H} = \mathbf{B}/\mu_0 \)，但磁鐵<strong>內部</strong>的 H 與 B 遠非「方向相同的成正比向量」。由 Eq. (6-75)：</p>
+        <div class="eq">\[ \mathbf{H} = \frac{\mathbf{B}}{\mu_0} - \mathbf{M} \tag{6-120} \]</div>
+        <p>又因軸上內部 \( B/\mu_0 \) 小於 \( M_0 \)，可知沿軸內部 H 與 B 方向相反。對細長磁鐵（\( L \gg b \)），Eq. (6-117) 近似給出 \( B_{P_0} = \mu_0 M_0 \)，代入 Eq. (6-120) 得 \( H_{P_0} \cong 0 \)。因此在細長磁鐵的中央（B 為最大處），H 幾乎消失。依假設，M 在外部為零，在磁鐵內部處處為一定值向量。</p>
+      </div>
+      <h3>純量磁位（current-free 區域）</h3>
+      <p>在無電流（current-free）區域，磁通密度 B 為無旋（irrotational），可表示為<span class="term">純量磁位（scalar magnetic potential）</span>\( V_m \) 的梯度（如 6-5.1 節）：</p>
+      <div class="eq">\[ \mathbf{B} = -\mu\nabla V_m \tag{6-121} \]</div>
+      <p>假設 \( \mu \) 為常數，把 Eq. (6-121) 代入 \( \nabla \cdot \mathbf{B} = 0 \)（Eq. 6-6），得到 \( V_m \) 的拉普拉斯方程式（Laplace's equation）：</p>
+      <div class="eq">\[ \boxed{\;\nabla^2 V_m = 0\;} \tag{6-122} \]</div>
+      <p>Eq. (6-122) 與無電荷區域中純量電位 V 的拉普拉斯方程式 Eq. (4-10) 完全類似。可用相同方式證明：滿足給定邊界條件的解是唯一的（見 4-3 節）。因此第 4 章用於求解靜電邊界值問題的技巧（鏡像法 method of images 與分離變數法 separation of variables）可移植來求解類似的磁靜邊界值問題。然而，雖然「導體邊界維持固定電位」的靜電問題在實務上很常見，類似的「磁位邊界為定值」的磁靜問題卻少有實用性（回想：孤立磁荷不存在，且磁通線恆形成封閉路徑）。鐵磁材料中 B 與 H 關係的非線性，也使磁靜邊界值問題的解析求解更為複雜。</p>
+    </article>
+  </section>
+  <section id="quiz" class="panel">
+
+    <div id="qStart" class="card q-intro">
+      <h2>隨堂測驗</h2>
+      <p class="lead">從 <b>100 題</b>進階題庫隨機抽 10 題（中英對照），全部用按鈕作答。</p>
+      <ul class="rules">
+        <li><span class="ic">🎲</span><span>每次隨機抽 <b>10 題</b>，選項順序也會打亂</span></li>
+        <li><span class="ic">👆</span><span>點按鈕選答案，按「下一題」前進；可回上一題修改</span></li>
+        <li><span class="ic">🏁</span><span>做完 10 題才一次顯示<b>分數</b>與<b>答對題數</b></span></li>
+        <li><span class="ic">📌</span><span>答錯的題目會附上<b>正確答案＋檢討說明</b></span></li>
+        <li><span class="ic">⚠️</span><span><b>進階陷阱</b>：選擇題更難、計算更多；是非題會把熟悉的敘述<b>反過來講</b>，小心誤導！</span></li>
+      </ul>
+      <button class="btn btn-primary" id="btnStart">開始測驗　START</button>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btnBrowse">📚 瀏覽全部 100 題＋詳解</button>
+      </div>
+    </div>
+
+    <div id="qRun" class="card" style="display:none">
+      <div class="qbar-top">
+        <span class="qcount" id="qCount">第 1 / 10 題</span>
+        <button class="qexit" id="btnExit">✕ 退出</button>
+      </div>
+      <div class="progress"><i id="qFill"></i></div>
+      <div id="qBody"></div>
+      <div class="qnav">
+        <button class="btn btn-prev" id="btnPrev">← 上一題</button>
+        <button class="btn btn-primary" id="btnNext" disabled>下一題 →</button>
+      </div>
+    </div>
+
+    <div id="qResult" class="card" style="display:none"></div>
+
+    <div id="qBrowse" class="card" style="display:none">
+      <div class="qbar-top">
+        <span class="qcount">全部 100 題</span>
+        <button class="qexit" id="btnBrowseBack">← 返回</button>
+      </div>
+      <div class="filters" id="bFilters">
+        <button class="filt on" data-f="all">全部 100</button>
+        <button class="filt" data-f="6-1">6-1（25）</button>
+        <button class="filt" data-f="6-7">6-7（32）</button>
+        <button class="filt" data-f="6-10">6-10（43）</button>
+      </div>
+      <div id="bList"></div>
+    </div>
+
+  </section>
+
+  <footer>⚡ Static Magnetic Fields · 6-1 / 6-7 / 6-10 · 自製複習工具【PRO 100題】</footer>
+</div>
+<script>
+const QUESTIONS = [
+/* ===== 6-1 緒論 ===== */
+{id:1,sec:"6-1",t:"mc",zh:"勞侖茲力方程式為下列何者？",en:"Which of the following is Lorentz's force equation?",opts:[{zh:"F = qE"},{zh:"F = q(E + u×B)"},{zh:"F = qu×B"},{zh:"F = q(E + B)"}],ans:1,exp:"總電磁力 = 電力 F<sub>e</sub> = qE 加上磁力 F<sub>m</sub> = qu×B，合併即 <b>F = q(E + u×B)</b>（Eq. 6-5）。(a) 只有電力，(c) 只有磁力。"},
+{id:2,sec:"6-1",t:"tf",zh:"磁力 F<sub>m</sub> = qu×B 的方向永遠垂直於電荷的速度 u。",en:"The magnetic force F<sub>m</sub> = qu×B is always perpendicular to the charge's velocity u.",ans:true,exp:"由外積，u×B 同時垂直於 u 與 B，故磁力恆垂直速度；<b>也因此磁力對電荷不作功</b>。"},
+{id:3,sec:"6-1",t:"mc",zh:"磁通密度 B 的 SI 單位為何？",en:"What is the SI unit of magnetic flux density B?",opts:[{zh:"安培/公尺",en:"A/m"},{zh:"韋伯/平方公尺，即特斯拉",en:"Wb/m², i.e. tesla (T)"},{zh:"庫侖",en:"coulomb (C)"},{zh:"伏特",en:"volt (V)"}],ans:1,exp:"B 以 Wb/m²（特斯拉 T）量度。<b>A/m 是磁場強度 H 的單位</b>，別搞混。"},
+{id:4,sec:"6-1",t:"tf",zh:"在 CGS 單位制中，1 特斯拉等於 10⁴ 高斯。",en:"In CGS units, 1 tesla equals 10⁴ gauss.",ans:true,exp:"課文註腳：1 Wb/m²（1 T）= 10<sup>4</sup> gauss；地球磁場約 ½ gauss ≈ 0.5×10<sup>−4</sup> T。"},
+{id:5,sec:"6-1",t:"mc",zh:"線性、等向介質中，D 與 E 的本構關係為？",en:"In a linear, isotropic medium, the constitutive relation between D and E is?",opts:[{zh:"D = εE"},{zh:"D = μE"},{zh:"D = E/ε"},{zh:"D = ε<sub>0</sub> + E"}],ans:0,exp:"線性等向 <b>D = εE</b>，ε 為介電係數（純量）；對應磁場的是 B = μH。"},
+{id:6,sec:"6-1",t:"tf",zh:"磁力可以用電場 E 或電通密度 D 表示出來。",en:"The magnetic force can be expressed in terms of E or D.",ans:false,exp:"課文明言磁力 F<sub>m</sub> <b>無法</b>用 E 或 D 表示，必須引入新場量——磁通密度 B。"},
+{id:7,sec:"6-1",t:"mc",zh:"作用在靜止測試電荷 q 上的電力為？",en:"The electric force on a stationary test charge q is?",opts:[{zh:"F<sub>e</sub> = qE"},{zh:"F<sub>e</sub> = qu×B"},{zh:"F<sub>e</sub> = q/E"},{zh:"F<sub>e</sub> = εE"}],ans:0,exp:"F<sub>e</sub> = qE（Eq. 6-3），方向與 E 相同，大小與 q 成正比。"},
+{id:8,sec:"6-1",t:"tf",zh:"勞侖茲力方程式可由其他電磁假設推導出來。",en:"Lorentz's force equation can be derived from the other postulates.",ans:false,exp:"課文：勞侖茲力可視為一個<b>基本假設</b>，無法由其他假設推導，其正確性由實驗確立。"},
+{id:9,sec:"6-1",t:"mc",zh:"本章（第 6 章）新引入的「第四個」向量場量是？",en:"The fourth vector field quantity newly introduced in this chapter is?",opts:[{zh:"電場強度 E",en:"E"},{zh:"電通密度 D",en:"D"},{zh:"磁通密度 B",en:"B"},{zh:"磁場強度 H",en:"H"}],ans:3,exp:"前三個為 E、D、B；本章引入<b>磁場強度 H</b>（第四個向量場量）。"},
+{id:10,sec:"6-1",t:"tf",zh:"一韋伯（weber）等同於一伏特–秒（volt-second）。",en:"One weber is the same as one volt-second.",ans:true,exp:"課文註腳：韋伯 = 伏特–秒（由 V = dΦ/dt 看出量綱關係）。"},
+{id:11,sec:"6-1",t:"mc",zh:"磁力 F<sub>m</sub> 的大小與下列何者成正比？",en:"The magnitude of F<sub>m</sub> is proportional to which of the following?",opts:[{zh:"速度平行於固定方向的分量",en:"velocity component parallel to the fixed direction"},{zh:"速度垂直於固定方向的分量",en:"velocity component perpendicular to the fixed direction"},{zh:"電荷的加速度",en:"the charge's acceleration"},{zh:"與速度無關",en:"independent of velocity"}],ans:1,exp:"課文特性 (3)：F<sub>m</sub> 大小正比於<b>速度垂直於固定方向的分量</b>。"},
+{id:12,sec:"6-1",t:"tf",zh:"因為磁力恆垂直於速度，磁力對運動電荷不作功。",en:"Because the magnetic force is always perpendicular to velocity, it does no work on a moving charge.",ans:true,exp:"功率 = F·u；因 F<sub>m</sub> ⊥ u，故 F<sub>m</sub>·u = 0，<b>磁力不作功</b>（只改變方向不改變動能）。"},
+/* ===== 6-7 磁場強度與相對導磁係數 ===== */
+{id:13,sec:"6-7",t:"mc",zh:"磁場強度 H 的定義式為？",en:"The defining equation for the magnetic field intensity H is?",opts:[{zh:"H = B/μ<sub>0</sub> − M"},{zh:"H = B/μ<sub>0</sub> + M"},{zh:"H = μ<sub>0</sub>B − M"},{zh:"H = B − μ<sub>0</sub>M"}],ans:0,exp:"<b>H = B/μ<sub>0</sub> − M</b>（Eq. 6-75），單位 A/m。引入 H 後旋度方程式只需處理自由電流。"},
+{id:14,sec:"6-7",t:"mc",zh:"以 H 表示的安培定律微分形式為？",en:"The differential form of Ampère's law in terms of H is?",opts:[{zh:"∇·H = J"},{zh:"∇×H = J"},{zh:"∇×H = μ<sub>0</sub>J"},{zh:"∇×H = 0"}],ans:1,exp:"<b>∇×H = J</b>（Eq. 6-76），J 是「自由」電流體密度；導磁係數不出現此式。"},
+{id:15,sec:"6-7",t:"tf",zh:"在 ∇×H = J 中，J 包含自由電流與磁化（束縛）電流。",en:"In ∇×H = J, J includes both free current and magnetization (bound) current.",ans:false,exp:"此處 J <b>只是自由電流</b>。磁化電流 J<sub>m</sub> = ∇×M 已被吸收進 H 的定義中。"},
+{id:16,sec:"6-7",t:"mc",zh:"安培環路定律的積分形式為？",en:"The integral form of Ampère's circuital law is?",opts:[{zh:"∮H·dℓ = I"},{zh:"∮B·dℓ = I"},{zh:"∮H·dℓ = μ<sub>0</sub>I"},{zh:"∮H·ds = I"}],ans:0,exp:"<b>∮H·dℓ = I</b>（Eq. 6-78）：H 沿封閉路徑環量 = 通過所圍面的自由電流，C 與 I 遵右手定則。"},
+{id:17,sec:"6-7",t:"mc",zh:"線性等向介質中，M 與 H 的關係為？",en:"In a linear, isotropic medium, the relation between M and H is?",opts:[{zh:"M = χ<sub>m</sub>H"},{zh:"M = μ<sub>0</sub>H"},{zh:"M = H/χ<sub>m</sub>"},{zh:"M = χ<sub>m</sub>B"}],ans:0,exp:"<b>M = χ<sub>m</sub>H</b>（Eq. 6-79），χ<sub>m</sub> 為磁化率（無因次）。"},
+{id:18,sec:"6-7",t:"mc",zh:"下列關於磁化率 χ<sub>m</sub> 的敘述何者正確？",en:"Which statement about the magnetic susceptibility χ<sub>m</sub> is correct?",opts:[{zh:"單位為 H/m",en:"unit is H/m"},{zh:"單位為 A/m",en:"unit is A/m"},{zh:"為無因次量",en:"it is dimensionless"},{zh:"單位為特斯拉",en:"unit is tesla"}],ans:2,exp:"χ<sub>m</sub> 與 μ<sub>r</sub> 皆<b>無因次</b>；有單位的是導磁係數 μ（H/m）。"},
+{id:19,sec:"6-7",t:"mc",zh:"線性介質 B = μH 中，μ 等於？",en:"In a linear medium B = μH, where μ equals?",opts:[{zh:"μ<sub>0</sub>(1 + χ<sub>m</sub>) = μ<sub>0</sub>μ<sub>r</sub>"},{zh:"μ<sub>0</sub>/μ<sub>r</sub>"},{zh:"1 + χ<sub>m</sub>"},{zh:"μ<sub>0</sub> − M"}],ans:0,exp:"B = μ<sub>0</sub>(1+χ<sub>m</sub>)H = μ<sub>0</sub>μ<sub>r</sub>H = μH（Eq. 6-80a），故 <b>μ = μ<sub>0</sub>μ<sub>r</sub></b>（H/m）。"},
+{id:20,sec:"6-7",t:"mc",zh:"相對導磁係數 μ<sub>r</sub> 與磁化率 χ<sub>m</sub> 的關係為？",en:"The relation between relative permeability μ<sub>r</sub> and susceptibility χ<sub>m</sub> is?",opts:[{zh:"μ<sub>r</sub> = 1 + χ<sub>m</sub>"},{zh:"μ<sub>r</sub> = χ<sub>m</sub> − 1"},{zh:"μ<sub>r</sub> = χ<sub>m</sub>"},{zh:"μ<sub>r</sub> = 1/χ<sub>m</sub>"}],ans:0,exp:"<b>μ<sub>r</sub> = 1 + χ<sub>m</sub> = μ/μ<sub>0</sub></b>（Eq. 6-81），無因次。"},
+{id:21,sec:"6-7",t:"tf",zh:"絕對導磁係數 μ 的單位是亨利每公尺（H/m）。",en:"The absolute permeability μ has units of henries per meter (H/m).",ans:true,exp:"μ = μ<sub>0</sub>μ<sub>r</sub>，單位 H/m；μ<sub>r</sub>、χ<sub>m</sub> 則無因次。"},
+{id:22,sec:"6-7",t:"tf",zh:"∇·B = 0 與 ∇×H = J 是磁靜學的兩個基本控制微分方程式。",en:"∇·B = 0 and ∇×H = J are the two fundamental governing differential equations of magnetostatics.",ans:true,exp:"課文明列此二式（Eq. 6-6、6-76）為基本控制方程式，且<b>導磁係數不顯式出現</b>。"},
+{id:23,sec:"6-7",t:"mc",zh:"「簡單介質（simple medium）」的定義為？",en:"A simple medium is defined as one that is?",opts:[{zh:"線性、等向、均勻",en:"linear, isotropic, homogeneous"},{zh:"只要是線性即可",en:"linear only"},{zh:"非線性但等向",en:"nonlinear but isotropic"},{zh:"鐵磁性",en:"ferromagnetic"}],ans:0,exp:"簡單介質 = <b>線性、等向、均勻</b>；此時 χ<sub>m</sub> 與 μ<sub>r</sub> 為常數。"},
+{id:24,sec:"6-7",t:"tf",zh:"鐵磁材料（鐵、鎳、鈷）的 μ<sub>r</sub> 可以非常大，且導磁係數與材料的磁化歷史有關。",en:"Ferromagnetic materials can have very large μ<sub>r</sub>, and their permeability depends on magnetic history.",ans:true,exp:"鐵磁 μ<sub>r</sub> 約 50–5000（特殊合金 10<sup>6</sup> 以上），且因<b>磁滯</b>，μ 取決於 H 與先前歷史。"},
+{id:25,sec:"6-7",t:"mc",zh:"引入磁場強度 H 的主要好處是？",en:"The main advantage of introducing H is?",opts:[{zh:"可避免使用磁通密度 B",en:"avoids using B"},{zh:"旋度方程式只需處理自由電流，不必明確處理 M 或 J<sub>m</sub>",en:"the curl equation needs only free current, not M or J<sub>m</sub>"},{zh:"使導磁係數消失",en:"makes permeability vanish"},{zh:"使 B 變成純量",en:"makes B a scalar"}],ans:1,exp:"用 H 寫 ∇×H = J <b>只與自由電流有關</b>，不必明確處理 M 或 J<sub>m</sub>。"},
+{id:26,sec:"6-7",t:"tf",zh:"磁場強度 H 的單位是安培每公尺（A/m）。",en:"The unit of magnetic field intensity H is amperes per meter (A/m).",ans:true,exp:"H = B/μ<sub>0</sub> − M，單位 A/m；∇×H = J 中 J 為 A/m²。"},
+{id:27,sec:"6-7",t:"mc",zh:"安培環路定律在何種情況下最適合用來求磁場？",en:"Ampère's circuital law is most useful for finding the field when?",opts:[{zh:"場源不規則時",en:"sources are irregular"},{zh:"存在對稱性（如柱對稱）時",en:"symmetry (e.g. cylindrical) exists"},{zh:"介質為非線性時",en:"the medium is nonlinear"},{zh:"電流隨時間變化時",en:"current varies in time"}],ans:1,exp:"存在<b>對稱性（尤其柱對稱）</b>時，可找到 H 為定值的路徑，使 ∮H·dℓ = I 易解。"},
+{id:28,sec:"6-7",t:"tf",zh:"在 ∇×H = J 中，介質的導磁係數會明確出現。",en:"The medium's permeability appears explicitly in ∇×H = J.",ans:false,exp:"兩個基本方程式（∇·B=0、∇×H=J）中導磁係數<b>不</b>顯式出現；μ 出現在本構關係 B = μH 中。"},
+{id:29,sec:"6-7",t:"mc",zh:"把 M = χ<sub>m</sub>H 代入 H = B/μ<sub>0</sub> − M，可整理得？",en:"Substituting M = χ<sub>m</sub>H into H = B/μ<sub>0</sub> − M yields?",opts:[{zh:"B = μ<sub>0</sub>(1 + χ<sub>m</sub>)H"},{zh:"B = μ<sub>0</sub>(1 − χ<sub>m</sub>)H"},{zh:"B = μ<sub>0</sub>H/χ<sub>m</sub>"},{zh:"B = μ<sub>0</sub>χ<sub>m</sub>H"}],ans:0,exp:"H = B/μ<sub>0</sub> − χ<sub>m</sub>H ⟹ H(1+χ<sub>m</sub>) = B/μ<sub>0</sub> ⟹ <b>B = μ<sub>0</sub>(1+χ<sub>m</sub>)H</b>。"},
+{id:30,sec:"6-7",t:"tf",zh:"大多數（非鐵磁）材料的導磁係數非常接近自由空間值 μ<sub>0</sub>。",en:"The permeability of most (nonferromagnetic) materials is very close to μ<sub>0</sub>.",ans:true,exp:"課文：大多數材料 μ ≈ μ<sub>0</sub>（μ<sub>r</sub> ≈ 1）；只有鐵磁材料 μ<sub>r</sub> 才會很大。"},
+/* ===== 6-10 邊界條件 ===== */
+{id:31,sec:"6-10",t:"mc",zh:"B 在兩介質界面的法線分量邊界條件為？",en:"The boundary condition for the normal component of B is?",opts:[{zh:"B<sub>1n</sub> = B<sub>2n</sub>"},{zh:"B<sub>1t</sub> = B<sub>2t</sub>"},{zh:"B<sub>1n</sub> − B<sub>2n</sub> = J<sub>s</sub>"},{zh:"B<sub>1n</sub> = μB<sub>2n</sub>"}],ans:0,exp:"由 ∇·B = 0（藥盒法）得 <b>B<sub>1n</sub> = B<sub>2n</sub></b>（Eq. 6-107）。"},
+{id:32,sec:"6-10",t:"mc",zh:"推導「B 法線分量連續」所用的基本方程式是？",en:"Which fundamental equation gives the continuity of normal B?",opts:[{zh:"∇×H = J"},{zh:"∇·B = 0"},{zh:"∇×E = 0"},{zh:"∇·D = ρ"}],ans:1,exp:"用 <b>∇·B = 0</b>，對跨界面小藥盒取 ∮B·ds = 0，得 B<sub>1n</sub> = B<sub>2n</sub>。"},
+{id:33,sec:"6-10",t:"mc",zh:"對線性介質，B<sub>1n</sub> = B<sub>2n</sub> 可改寫為？",en:"For linear media, B<sub>1n</sub> = B<sub>2n</sub> can be rewritten as?",opts:[{zh:"μ<sub>1</sub>H<sub>1n</sub> = μ<sub>2</sub>H<sub>2n</sub>"},{zh:"H<sub>1n</sub> = H<sub>2n</sub>"},{zh:"μ<sub>1</sub>H<sub>1t</sub> = μ<sub>2</sub>H<sub>2t</sub>"},{zh:"H<sub>1n</sub>/μ<sub>1</sub> = H<sub>2n</sub>/μ<sub>2</sub>"}],ans:0,exp:"線性介質 B = μH 代入得 <b>μ<sub>1</sub>H<sub>1n</sub> = μ<sub>2</sub>H<sub>2n</sub></b>（Eq. 6-108）。除非 μ<sub>1</sub>=μ<sub>2</sub>，H 法線分量不連續。"},
+{id:34,sec:"6-10",t:"tf",zh:"磁場強度 H 的法線分量在界面上恆連續。",en:"The normal component of H is always continuous across an interface.",ans:false,exp:"<b>連續的是 B 的法線分量</b>。由 μ<sub>1</sub>H<sub>1n</sub> = μ<sub>2</sub>H<sub>2n</sub>，μ<sub>1</sub> ≠ μ<sub>2</sub> 時 H<sub>1n</sub> ≠ H<sub>2n</sub>。常見陷阱！"},
+{id:35,sec:"6-10",t:"mc",zh:"H 的切線分量邊界條件（純量形式）為？",en:"The tangential-H boundary condition (scalar form) is?",opts:[{zh:"H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub>"},{zh:"H<sub>1t</sub> = H<sub>2t</sub>（恆成立）"},{zh:"H<sub>1n</sub> − H<sub>2n</sub> = J<sub>sn</sub>"},{zh:"H<sub>1t</sub> + H<sub>2t</sub> = J<sub>sn</sub>"}],ans:0,exp:"由 ∮H·dℓ = I（小路徑）得 <b>H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub></b>（Eq. 6-110），J<sub>sn</sub> 為垂直路徑的面電流密度。"},
+{id:36,sec:"6-10",t:"mc",zh:"H 切線分量邊界條件的向量（精簡）形式為？",en:"The vector (concise) form of the tangential-H condition is?",opts:[{zh:"a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub>"},{zh:"a<sub>n2</sub> · (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub>"},{zh:"a<sub>n2</sub> × (B<sub>1</sub> − B<sub>2</sub>) = J<sub>s</sub>"},{zh:"a<sub>n2</sub> × (H<sub>1</sub> + H<sub>2</sub>) = J<sub>s</sub>"}],ans:0,exp:"<b>a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub></b>（Eq. 6-111），a<sub>n2</sub> 是「由介質 2 向外」的單位法線。"},
+{id:37,sec:"6-10",t:"tf",zh:"若界面上沒有自由面電流（J<sub>s</sub> = 0），則 H 的切線分量連續。",en:"If there is no free surface current (J<sub>s</sub> = 0), the tangential component of H is continuous.",ans:true,exp:"J<sub>s</sub> = 0 時 <b>H<sub>1t</sub> = H<sub>2t</sub></b>。對電導率有限的「幾乎所有」物理介質皆如此。"},
+{id:38,sec:"6-10",t:"mc",zh:"H 的切線分量在什麼情況下才會「不連續」？",en:"The tangential component of H is discontinuous only when?",opts:[{zh:"兩介質導磁係數不同",en:"the two permeabilities differ"},{zh:"界面為理想完美導體或超導體",en:"the interface is a perfect conductor or superconductor"},{zh:"法線分量連續時",en:"the normal component is continuous"},{zh:"介質為非線性時",en:"the medium is nonlinear"}],ans:1,exp:"只有界面為<b>理想完美導體或超導體</b>（存在自由面電流 J<sub>s</sub>）時，H 切線分量才不連續。"},
+{id:39,sec:"6-10",t:"mc",zh:"磁場的「折射定律」（範例 6-12）為？",en:"The law of refraction for the magnetic field (Example 6-12) is?",opts:[{zh:"tan α<sub>2</sub> / tan α<sub>1</sub> = μ<sub>2</sub>/μ<sub>1</sub>"},{zh:"tan α<sub>2</sub> / tan α<sub>1</sub> = μ<sub>1</sub>/μ<sub>2</sub>"},{zh:"sin α<sub>2</sub> / sin α<sub>1</sub> = μ<sub>2</sub>/μ<sub>1</sub>"},{zh:"cos α<sub>2</sub> / cos α<sub>1</sub> = μ<sub>2</sub>/μ<sub>1</sub>"}],ans:0,exp:"由 B 法線連續與 H 切線連續相除得 <b>tan α<sub>2</sub>/tan α<sub>1</sub> = μ<sub>2</sub>/μ<sub>1</sub></b>（Eq. 6-114）。角度由法線量起。"},
+{id:40,sec:"6-10",t:"tf",zh:"在範例 6-12 中，B 法線連續給出 μ<sub>2</sub>H<sub>2</sub>cos α<sub>2</sub> = μ<sub>1</sub>H<sub>1</sub>cos α<sub>1</sub>，H 切線連續給出 H<sub>2</sub>sin α<sub>2</sub> = H<sub>1</sub>sin α<sub>1</sub>。",en:"In Example 6-12, normal-B gives μ<sub>2</sub>H<sub>2</sub>cos α<sub>2</sub> = μ<sub>1</sub>H<sub>1</sub>cos α<sub>1</sub> and tangential-H gives H<sub>2</sub>sin α<sub>2</sub> = H<sub>1</sub>sin α<sub>1</sub>.",ans:true,exp:"角度由法線量起：法線分量含 cos，切線分量含 sin；兩式相除即得折射關係。"},
+{id:41,sec:"6-10",t:"mc",zh:"介質 1 為空氣、介質 2 為鐵磁體（μ<sub>2</sub> ≫ μ<sub>1</sub>）。對不接近零的入射角 α<sub>1</sub>，鐵磁體內磁場方向為？",en:"Medium 1 air, medium 2 ferromagnetic (μ<sub>2</sub> ≫ μ<sub>1</sub>). For α<sub>1</sub> not near zero, the field inside the ferromagnet is?",opts:[{zh:"幾乎垂直於界面（α<sub>2</sub> ≈ 0）",en:"nearly normal (α<sub>2</sub> ≈ 0)"},{zh:"幾乎平行於界面（α<sub>2</sub> ≈ 90°）",en:"nearly parallel (α<sub>2</sub> ≈ 90°)"},{zh:"與 α<sub>1</sub> 相同",en:"same as α<sub>1</sub>"},{zh:"折射角為 45°",en:"α<sub>2</sub> = 45°"}],ans:1,exp:"μ<sub>2</sub> ≫ μ<sub>1</sub> ⟹ tan α<sub>2</sub> = (μ<sub>2</sub>/μ<sub>1</sub>)tan α<sub>1</sub> 很大 ⟹ <b>α<sub>2</sub> ≈ 90°</b>，磁場幾乎平行界面。"},
+{id:42,sec:"6-10",t:"mc",zh:"磁場源自鐵磁體（介質 1，μ<sub>1</sub> ≫ μ<sub>2</sub>）並射入空氣（介質 2），則出射方向為？",en:"A field originating in a ferromagnet (medium 1, μ<sub>1</sub> ≫ μ<sub>2</sub>) emerges into air. The emergent direction is?",opts:[{zh:"幾乎垂直於界面（α<sub>2</sub> ≈ 0）",en:"nearly normal (α<sub>2</sub> ≈ 0)"},{zh:"幾乎平行於界面",en:"nearly parallel"},{zh:"方向不變",en:"unchanged"},{zh:"α<sub>2</sub> = 90°",en:"α<sub>2</sub> = 90°"}],ans:0,exp:"μ<sub>1</sub> ≫ μ<sub>2</sub> ⟹ tan α<sub>2</sub> 很小 ⟹ <b>α<sub>2</sub> ≈ 0</b>，磁通線幾乎垂直射出界面。"},
+{id:43,sec:"6-10",t:"tf",zh:"磁場的折射公式（含 μ）與介電介質中電場折射公式（含 ε）形式完全類似。",en:"The magnetic refraction formula (with μ) is exactly analogous to the dielectric one (with ε).",ans:true,exp:"課文：Eq. (6-114)、(6-116) 與電場的 Eq. (3-129)、(3-130) 完全類似，只把 ε 換成 μ。"},
+{id:44,sec:"6-10",t:"mc",zh:"在無電流區域，B 可用純量磁位 V<sub>m</sub> 表示為？",en:"In a current-free region, B can be written with a scalar magnetic potential V<sub>m</sub> as?",opts:[{zh:"B = −μ∇V<sub>m</sub>"},{zh:"B = μ∇V<sub>m</sub>"},{zh:"B = −∇×V<sub>m</sub>"},{zh:"B = ∇·V<sub>m</sub>"}],ans:0,exp:"無電流區 B 無旋，<b>B = −μ∇V<sub>m</sub></b>（Eq. 6-121），類比電位 E = −∇V。"},
+{id:45,sec:"6-10",t:"mc",zh:"假設 μ 為常數，把 B = −μ∇V<sub>m</sub> 代入 ∇·B = 0，得 V<sub>m</sub> 滿足？",en:"With constant μ, substituting B = −μ∇V<sub>m</sub> into ∇·B = 0 gives that V<sub>m</sub> satisfies?",opts:[{zh:"拉普拉斯方程式 ∇²V<sub>m</sub> = 0",en:"Laplace's equation ∇²V<sub>m</sub> = 0"},{zh:"卜瓦松方程式 ∇²V<sub>m</sub> = −ρ/ε",en:"Poisson's equation"},{zh:"波動方程式",en:"the wave equation"},{zh:"∇×V<sub>m</sub> = 0"}],ans:0,exp:"∇·(−μ∇V<sub>m</sub>) = 0 ⟹ <b>∇²V<sub>m</sub> = 0</b>（Eq. 6-122），拉普拉斯方程式。"},
+{id:46,sec:"6-10",t:"tf",zh:"在細長棒磁鐵的中央（B 最大處），磁場強度 H 幾乎為零，且內部 H 與 B 方向相反。",en:"At the center of a long, thin bar magnet (max B), H nearly vanishes and inside H and B point oppositely.",ans:true,exp:"範例 6-13：內部 B/μ<sub>0</sub> < M<sub>0</sub> ⟹ H = B/μ<sub>0</sub> − M 使內部 H 與 B 反向；細長磁鐵中央 B ≈ μ<sub>0</sub>M<sub>0</sub> ⟹ H ≈ 0。"},
+{id:47,sec:"6-10",t:"tf",zh:"在棒磁鐵內部，H = B/μ<sub>0</sub> 恆成立（H 與 B 同向且成正比）。",en:"Inside a bar magnet, H = B/μ<sub>0</sub> always holds (H and B parallel and proportional).",ans:false,exp:"H = B/μ<sub>0</sub> <b>只在磁鐵外部</b>（M=0）成立。內部 H = B/μ<sub>0</sub> − M，因 M≠0，H 與 B 一般不平行甚至反向。"},
+{id:48,sec:"6-10",t:"mc",zh:"推導 H 切線分量邊界條件時，封閉路徑的取法為？",en:"When deriving the tangential-H condition, the closed path is taken such that?",opts:[{zh:"垂直界面的邊 Δh → 0",en:"the sides ⊥ to interface, Δh → 0"},{zh:"水平邊 Δw → 0",en:"the sides ∥ to interface, Δw → 0"},{zh:"路徑為圓形",en:"a circular path"},{zh:"路徑完全在介質 1 中",en:"path entirely in medium 1"}],ans:0,exp:"取跨界面小矩形，令垂直界面的兩邊 bc = da = <b>Δh → 0</b>，積分只剩兩切向邊，得 H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub>。"},
+{id:49,sec:"6-10",t:"tf",zh:"在棒磁鐵側面，面電流為 J<sub>ms</sub> = a<sub>φ</sub>M<sub>0</sub>，使 B 的軸向分量跨側壁改變量等於 μ<sub>0</sub>M<sub>0</sub>。",en:"On the side of a bar magnet, J<sub>ms</sub> = a<sub>φ</sub>M<sub>0</sub>, making the axial B change by μ<sub>0</sub>M<sub>0</sub> across the side wall.",ans:true,exp:"範例 6-13：側面磁化面電流 J<sub>ms</sub> = a<sub>φ</sub>M<sub>0</sub>（Eq. 6-119）；依切線邊界條件，軸向 B 改變量 = μ<sub>0</sub>M<sub>0</sub>。"},
+{id:50,sec:"6-10",t:"mc",zh:"為何「磁位邊界為定值」的磁靜邊界值問題在實務上少見？",en:"Why are magnetostatic BVPs with constant magnetic-potential boundaries of little practical use?",opts:[{zh:"因為孤立磁荷不存在、磁通線恆形成封閉路徑",en:"isolated magnetic charges do not exist and flux lines always close"},{zh:"因為拉普拉斯方程式無解",en:"Laplace's equation has no solution"},{zh:"因為 H 永遠為零",en:"H is always zero"},{zh:"因為磁場不存在邊界",en:"magnetic fields have no boundaries"}],ans:0,exp:"課文：<b>孤立磁荷不存在、磁通線恆封閉</b>，故無類似「導體維持固定電位」的對應物；加上鐵磁非線性使問題複雜。"},
+/* ========== PRO 進階新增 50 題（51-100） ========== */
+/* --- 是非題：顛倒現有題意（誤導陷阱），答案相反 --- */
+{id:51,sec:"6-1",t:"tf",zh:"磁力 F<sub>m</sub> = qu×B 的方向永遠平行於電荷的速度 u。",en:"The magnetic force F<sub>m</sub> = qu×B is always parallel to the charge's velocity u.",ans:false,exp:"陷阱：磁力恆<b>垂直</b>於速度（u×B 同時垂直 u 與 B），不是平行；敘述錯誤。"},
+{id:52,sec:"6-1",t:"tf",zh:"在 CGS 單位制中，1 高斯等於 10⁴ 特斯拉。",en:"In CGS units, 1 gauss equals 10⁴ tesla.",ans:false,exp:"關係寫反了：應為 <b>1 特斯拉 = 10<sup>4</sup> 高斯</b>（即 1 高斯 = 10<sup>−4</sup> T）。"},
+{id:53,sec:"6-1",t:"tf",zh:"磁力無法用電場 E 或電通密度 D 表示。",en:"The magnetic force cannot be expressed in terms of E or D.",ans:true,exp:"正確：課文明言磁力<b>無法</b>用 E 或 D 表示，必須引入磁通密度 B。"},
+{id:54,sec:"6-1",t:"tf",zh:"勞侖茲力方程式無法由其他電磁假設推導，本身可視為一個基本假設。",en:"Lorentz's force equation cannot be derived from the other postulates and is itself a fundamental postulate.",ans:true,exp:"正確：課文指出勞侖茲力是<b>基本假設</b>，無法由其他假設推導。"},
+{id:55,sec:"6-1",t:"tf",zh:"一韋伯（weber）等同於一安培–秒（ampere-second）。",en:"One weber is the same as one ampere-second.",ans:false,exp:"錯：韋伯 = <b>伏特–秒</b>，不是安培–秒（安培–秒＝庫侖）。"},
+{id:56,sec:"6-1",t:"tf",zh:"磁力會對運動電荷作功，因而改變其動能。",en:"The magnetic force does work on a moving charge and changes its kinetic energy.",ans:false,exp:"錯：磁力恆垂直速度，F<sub>m</sub>·u = 0，<b>不作功</b>、不改變動能（只改變方向）。"},
+{id:57,sec:"6-7",t:"tf",zh:"在 ∇×H = J 中，J 只包含自由電流，不含磁化（束縛）電流。",en:"In ∇×H = J, J contains only free current, not magnetization (bound) current.",ans:true,exp:"正確：此處 J 是<b>自由電流</b>；磁化電流 J<sub>m</sub>=∇×M 已被吸收進 H 的定義。"},
+{id:58,sec:"6-7",t:"tf",zh:"絕對導磁係數 μ 的單位是安培每公尺（A/m）。",en:"The absolute permeability μ has units of amperes per meter (A/m).",ans:false,exp:"錯：μ 的單位是 <b>H/m</b>；A/m 是磁場強度 H 的單位。"},
+{id:59,sec:"6-7",t:"tf",zh:"∇·B = 0 與 ∇·D = ρ 是磁靜學的兩個基本控制微分方程式。",en:"∇·B = 0 and ∇·D = ρ are the two fundamental governing equations of magnetostatics.",ans:false,exp:"錯：第二式應為 <b>∇×H = J</b>；∇·D = ρ 是靜電學的方程式。"},
+{id:60,sec:"6-7",t:"tf",zh:"鐵磁材料的 μ<sub>r</sub> 通常接近 1，且與材料的磁化歷史無關。",en:"Ferromagnetic materials usually have μ<sub>r</sub> near 1, independent of magnetic history.",ans:false,exp:"錯：鐵磁 μ<sub>r</sub> 可<b>非常大</b>（50–5000，可達 10<sup>6</sup>），且因<b>磁滯</b>與歷史有關。"},
+{id:61,sec:"6-7",t:"tf",zh:"磁場強度 H 的單位是韋伯每平方公尺（Wb/m²）。",en:"The magnetic field intensity H has units of Wb/m² (tesla).",ans:false,exp:"錯：H 的單位是 <b>A/m</b>；Wb/m²（特斯拉）是磁通密度 B 的單位。"},
+{id:62,sec:"6-7",t:"tf",zh:"在 ∇×H = J 中，介質的導磁係數 μ 不會明確出現。",en:"In ∇×H = J, the permeability μ does not appear explicitly.",ans:true,exp:"正確：兩個基本方程式（∇·B=0、∇×H=J）中<b>導磁係數不顯式出現</b>；μ 出現在 B=μH。"},
+{id:63,sec:"6-7",t:"tf",zh:"大多數（非鐵磁）材料的導磁係數遠大於自由空間值 μ<sub>0</sub>。",en:"The permeability of most (nonferromagnetic) materials is far larger than μ<sub>0</sub>.",ans:false,exp:"錯：大多數材料 μ ≈ μ<sub>0</sub>（μ<sub>r</sub>≈1）；只有鐵磁材料 μ<sub>r</sub> 才很大。"},
+{id:64,sec:"6-10",t:"tf",zh:"磁通密度 B 的法線分量在界面上恆連續。",en:"The normal component of B is always continuous across an interface.",ans:true,exp:"正確：<b>B 法線連續</b>（B<sub>1n</sub>=B<sub>2n</sub>，Eq. 6-107）。小心區分：連續的是 B 法線、不是 H 法線。"},
+{id:65,sec:"6-10",t:"tf",zh:"即使界面上沒有自由面電流（J<sub>s</sub>=0），H 的切線分量仍不連續。",en:"Even with no free surface current (J<sub>s</sub>=0), the tangential component of H is discontinuous.",ans:false,exp:"錯：J<sub>s</sub>=0 時 <b>H 切線連續</b>（H<sub>1t</sub>=H<sub>2t</sub>）；只有完美導體/超導體才不連續。"},
+{id:66,sec:"6-10",t:"tf",zh:"B 法線連續給出 μ<sub>2</sub>H<sub>2</sub>sin α<sub>2</sub> = μ<sub>1</sub>H<sub>1</sub>sin α<sub>1</sub>，H 切線連續給出 H<sub>2</sub>cos α<sub>2</sub> = H<sub>1</sub>cos α<sub>1</sub>。",en:"Normal-B gives μ<sub>2</sub>H<sub>2</sub>sin α<sub>2</sub> = μ<sub>1</sub>H<sub>1</sub>sin α<sub>1</sub>, and tangential-H gives H<sub>2</sub>cos α<sub>2</sub> = H<sub>1</sub>cos α<sub>1</sub>.",ans:false,exp:"陷阱：cos/sin 顛倒了。角度由法線量起 ⟹ 法線分量含 <b>cos</b>、切線分量含 <b>sin</b>（Eq. 6-112/6-113）。"},
+{id:67,sec:"6-10",t:"tf",zh:"磁場的折射公式與介電介質中電場的折射公式形式完全不同，無法相互類比。",en:"The magnetic refraction formula is completely different from the dielectric one and cannot be analogized.",ans:false,exp:"錯：兩者<b>完全類似</b>（Eq. 6-114、6-116 對應 3-129、3-130），只是把 ε 換成 μ。"},
+{id:68,sec:"6-10",t:"tf",zh:"在細長棒磁鐵的中央，磁場強度 H 達到最大值，且內部 H 與 B 同向。",en:"At the center of a long, thin bar magnet, H is maximum and inside H and B point in the same direction.",ans:false,exp:"錯：中央 B 最大但 <b>H≈0</b>；且內部 H 與 B <b>方向相反</b>（H=B/μ<sub>0</sub>−M）。"},
+{id:69,sec:"6-10",t:"tf",zh:"在棒磁鐵內部，因 M≠0，H ≠ B/μ<sub>0</sub>，而是 H = B/μ<sub>0</sub> − M。",en:"Inside a bar magnet, since M≠0, H ≠ B/μ<sub>0</sub>; instead H = B/μ<sub>0</sub> − M.",ans:true,exp:"正確：H=B/μ<sub>0</sub> 只在<b>外部</b>（M=0）成立；內部須用 H = B/μ<sub>0</sub> − M。"},
+{id:70,sec:"6-10",t:"tf",zh:"棒磁鐵側面的磁化面電流方向為沿軸向，即 J<sub>ms</sub> = a<sub>z</sub>M<sub>0</sub>。",en:"The magnetization surface current on the side of a bar magnet is axial: J<sub>ms</sub> = a<sub>z</sub>M<sub>0</sub>.",ans:false,exp:"錯：側面磁化面電流是<b>環向（a<sub>φ</sub>）</b>，J<sub>ms</sub> = a<sub>φ</sub>M<sub>0</sub>（Eq. 6-119），不是軸向。"},
+/* --- 選擇題：更難（計算、深層概念） --- */
+{id:71,sec:"6-7",t:"mc",zh:"某線性介質的絕對導磁係數 μ = 2500μ<sub>0</sub>，其磁化率 χ<sub>m</sub> 約為？",en:"A linear medium has μ = 2500μ<sub>0</sub>. Its susceptibility χ<sub>m</sub> is about?",opts:[{zh:"2500"},{zh:"0.0004"},{zh:"2499"},{zh:"2501"}],ans:2,exp:"μ<sub>r</sub> = μ/μ<sub>0</sub> = 2500 ⟹ χ<sub>m</sub> = μ<sub>r</sub> − 1 = <b>2499</b>。"},
+{id:72,sec:"6-10",t:"mc",zh:"空氣（μ<sub>r</sub>≈1）中磁場與法線夾 45°，進入 μ<sub>r</sub>=4 的介質，折射角 α<sub>2</sub> 約為？",en:"A field at 45° from normal in air enters a μ<sub>r</sub>=4 medium. α<sub>2</sub> is about?",opts:[{zh:"45°"},{zh:"≈ 76°"},{zh:"≈ 14°"},{zh:"≈ 60°"}],ans:1,exp:"tan α<sub>2</sub> = (μ<sub>2</sub>/μ<sub>1</sub>)tan α<sub>1</sub> = 4×tan45° = 4 ⟹ α<sub>2</sub> = tan<sup>−1</sup>4 ≈ <b>76°</b>（偏離法線、靠近界面）。"},
+{id:73,sec:"6-10",t:"mc",zh:"磁場在 μ<sub>r</sub>=4 介質中與法線夾 45°，射入空氣（μ<sub>r</sub>≈1），折射角 α<sub>2</sub> 約為？",en:"A field at 45° from normal in a μ<sub>r</sub>=4 medium enters air. α<sub>2</sub> is about?",opts:[{zh:"45°"},{zh:"≈ 76°"},{zh:"0°"},{zh:"≈ 14°"}],ans:3,exp:"tan α<sub>2</sub> = (1/4)×tan45° = 0.25 ⟹ α<sub>2</sub> = tan<sup>−1</sup>0.25 ≈ <b>14°</b>（靠近法線）。"},
+{id:74,sec:"6-10",t:"mc",zh:"介質 1 中 H<sub>1</sub> = 10 A/m、與法線夾 30°。若界面無自由面電流，介質 2 中 H 的切線分量為？",en:"H<sub>1</sub> = 10 A/m at 30° from normal. With no surface current, the tangential H in medium 2 is?",opts:[{zh:"5 A/m"},{zh:"8.66 A/m"},{zh:"10 A/m"},{zh:"0"}],ans:0,exp:"切線分量 H<sub>1t</sub> = H<sub>1</sub>sin30° = 10×0.5 = 5 A/m；無面電流 ⟹ H<sub>2t</sub> = <b>5 A/m</b>（切線 H 連續）。"},
+{id:75,sec:"6-10",t:"mc",zh:"磁場垂直射向界面（α=0），B<sub>1</sub> = 1.2 T。不論兩側 μ 為何，B 在介質 2 的法線分量為？",en:"A field normal to the interface (α=0), B<sub>1</sub> = 1.2 T. Regardless of μ, the normal B in medium 2 is?",opts:[{zh:"取決於 μ<sub>2</sub>/μ<sub>1</sub>"},{zh:"0"},{zh:"1.2 T"},{zh:"μ<sub>r</sub>×1.2 T"}],ans:2,exp:"B 法線分量恆連續（B<sub>1n</sub>=B<sub>2n</sub>），與 μ 無關 ⟹ <b>1.2 T</b>。"},
+{id:76,sec:"6-1",t:"mc",zh:"地球磁場約 0.5×10<sup>−4</sup> T，換算為高斯約為？",en:"Earth's field ≈ 0.5×10⁻⁴ T. In gauss this is about?",opts:[{zh:"5 高斯"},{zh:"0.5 高斯"},{zh:"5000 高斯"},{zh:"0.5×10<sup>−8</sup> 高斯"}],ans:1,exp:"1 T = 10<sup>4</sup> gauss ⟹ 0.5×10<sup>−4</sup> T × 10<sup>4</sup> = <b>0.5 高斯</b>（≈½ gauss，與課文一致）。"},
+{id:77,sec:"6-1",t:"mc",zh:"2 特斯拉等於多少高斯？",en:"2 tesla equals how many gauss?",opts:[{zh:"2×10<sup>−4</sup> 高斯"},{zh:"2 高斯"},{zh:"200 高斯"},{zh:"2×10<sup>4</sup> 高斯"}],ans:3,exp:"1 T = 10<sup>4</sup> gauss ⟹ 2 T = <b>2×10<sup>4</sup> 高斯</b>。"},
+{id:78,sec:"6-10",t:"mc",zh:"磁場完全沿法線方向（α<sub>1</sub>=0）入射兩磁介質界面，折射角 α<sub>2</sub> 為？",en:"A field along the normal (α<sub>1</sub>=0) hits the interface. α<sub>2</sub> is?",opts:[{zh:"0°（不折射）"},{zh:"90°"},{zh:"45°"},{zh:"取決於 μ<sub>2</sub>/μ<sub>1</sub>"}],ans:0,exp:"tan α<sub>2</sub> = (μ<sub>2</sub>/μ<sub>1</sub>)tan0° = 0 ⟹ <b>α<sub>2</sub>=0</b>，法向入射不折射。"},
+{id:79,sec:"6-10",t:"mc",zh:"磁場平行於界面（切線方向）入射，且 μ<sub>1</sub>≠μ<sub>2</sub>、無自由面電流。下列何者正確？",en:"A field tangential to the interface, μ<sub>1</sub>≠μ<sub>2</sub>, no surface current. Which is correct?",opts:[{zh:"B 與 H 的切線分量都連續"},{zh:"兩者切線分量都不連續"},{zh:"H 切線連續，但 B 切線不連續"},{zh:"B 切線連續，但 H 切線不連續"}],ans:2,exp:"無面電流 ⟹ H<sub>t</sub> 連續；但 B=μH，μ 不同 ⟹ B<sub>t</sub>=μH<sub>t</sub> <b>不連續</b>。"},
+{id:80,sec:"6-10",t:"mc",zh:"在無自由面電流的界面上，下列哪一組分量「都」連續？",en:"With no free surface current, which pair of components are both continuous?",opts:[{zh:"B 的切線分量 與 H 的法線分量"},{zh:"B 的法線分量 與 H 的切線分量"},{zh:"B 的法線分量 與 H 的法線分量"},{zh:"四個分量全部連續"}],ans:1,exp:"邊界條件核心：<b>B<sub>n</sub> 連續</b>（∇·B=0）且 <b>H<sub>t</sub> 連續</b>（無面電流）；其餘一般不連續。"},
+{id:81,sec:"6-1",t:"mc",zh:"下列何者是「磁力不改變帶電粒子動能」的根本原因？",en:"What is the fundamental reason the magnetic force does not change a charged particle's kinetic energy?",opts:[{zh:"磁力恆為零"},{zh:"磁場恆為零"},{zh:"粒子始終靜止"},{zh:"磁力恆垂直於速度，故不作功"}],ans:3,exp:"功率 = F·u；F<sub>m</sub> ⊥ u ⟹ F<sub>m</sub>·u = 0，<b>不作功</b> ⟹ 動能不變。"},
+{id:82,sec:"6-1",t:"mc",zh:"一帶電粒子只受均勻磁場作用，其運動速率（speed）會如何變化？",en:"A charged particle in a uniform magnetic field only. How does its speed change?",opts:[{zh:"保持不變"},{zh:"持續增加"},{zh:"持續減少"},{zh:"視 B 大小而定"}],ans:0,exp:"磁力不作功 ⟹ 動能不變 ⟹ <b>速率不變</b>（只改變方向，作圓周/螺旋運動）。"},
+{id:83,sec:"6-7",t:"mc",zh:"安培環路定律 ∮H·dℓ = I 中的 I 代表？",en:"In Ampère's law ∮H·dℓ = I, what does I represent?",opts:[{zh:"自由電流加束縛電流"},{zh:"束縛（磁化）電流"},{zh:"穿過路徑的自由電流"},{zh:"位移電流"}],ans:2,exp:"以 H 表示時，環量只等於<b>自由電流</b>；束縛電流已含於 M、不出現在此式。"},
+{id:84,sec:"6-7",t:"mc",zh:"在磁性材料中，∮B·dℓ 等於？（對照 H 的版本）",en:"In a magnetic material, ∮B·dℓ equals? (compare with the H version)",opts:[{zh:"I<sub>自由</sub>"},{zh:"μ<sub>0</sub>(I<sub>自由</sub> + I<sub>束縛</sub>) = μ<sub>0</sub>I<sub>總</sub>"},{zh:"μ<sub>0</sub>I<sub>自由</sub>"},{zh:"0"}],ans:1,exp:"∇×B = μ<sub>0</sub>(J + J<sub>m</sub>) ⟹ ∮B·dℓ = <b>μ<sub>0</sub>I<sub>總</sub></b>（含束縛電流）；這正是引入 H 的原因——H 只看自由電流。"},
+{id:85,sec:"6-7",t:"mc",zh:"若某介質的磁化率 χ<sub>m</sub> < 0（抗磁性），則其相對導磁係數 μ<sub>r</sub>？",en:"If a medium has χ<sub>m</sub> < 0 (diamagnetic), its relative permeability μ<sub>r</sub> is?",opts:[{zh:"略大於 1"},{zh:"等於 1"},{zh:"等於 0"},{zh:"略小於 1"}],ans:3,exp:"μ<sub>r</sub> = 1 + χ<sub>m</sub>；χ<sub>m</sub><0 ⟹ <b>μ<sub>r</sub> < 1</b>（抗磁材料）。"},
+{id:86,sec:"6-10",t:"mc",zh:"邊界條件 B<sub>1n</sub> = B<sub>2n</sub> 是把哪個方程式應用到跨界面「小藥盒」得到的？",en:"B<sub>1n</sub> = B<sub>2n</sub> comes from applying which equation to a pillbox across the interface?",opts:[{zh:"∇·B = 0"},{zh:"∇×H = J"},{zh:"∇×E = 0"},{zh:"∇·D = ρ"}],ans:0,exp:"對小藥盒取 ∮B·ds = 0（源自 <b>∇·B = 0</b>）⟹ B<sub>1n</sub> = B<sub>2n</sub>。"},
+{id:87,sec:"6-10",t:"mc",zh:"邊界條件 H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub> 是把哪個積分式應用到跨界面「小封閉路徑」得到的？",en:"H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub> comes from applying which integral to a small loop across the interface?",opts:[{zh:"∮B·ds = 0"},{zh:"∮E·dℓ = 0"},{zh:"∮H·dℓ = I"},{zh:"∮D·ds = Q"}],ans:2,exp:"對小矩形路徑取 <b>∮H·dℓ = I</b>（源自 ∇×H=J）⟹ H<sub>1t</sub> − H<sub>2t</sub> = J<sub>sn</sub>。"},
+{id:88,sec:"6-10",t:"mc",zh:"純量磁位 V<sub>m</sub>（B = −μ∇V<sub>m</sub>）只能用於哪種區域？",en:"The scalar magnetic potential V<sub>m</sub> can be used only in what region?",opts:[{zh:"任何區域"},{zh:"無電流（current-free）區域"},{zh:"有電流的區域"},{zh:"導體內部"}],ans:1,exp:"B = −μ∇V<sub>m</sub> 要求 ∇×B = 0，即 J = 0；故只能用於<b>無電流區域</b>。"},
+{id:89,sec:"6-10",t:"mc",zh:"為什麼一般不能在「有電流」的區域定義純量磁位 V<sub>m</sub>？",en:"Why can't a scalar magnetic potential V<sub>m</sub> generally be defined in a current-carrying region?",opts:[{zh:"因為 V<sub>m</sub> 沒有解"},{zh:"因為 μ 會改變"},{zh:"因為該處 B = 0"},{zh:"因為該處 ∇×H = J ≠ 0，B 非無旋，無法寫成梯度"}],ans:3,exp:"有電流 ⟹ ∇×H = J ≠ 0 ⟹ B 有旋；<b>有旋場不能寫成純量函數的梯度</b>，故無法定義 V<sub>m</sub>。"},
+{id:90,sec:"6-10",t:"mc",zh:"用高導磁係數（μ<sub>r</sub> 很大）的鐵心「導引」磁通、做磁屏蔽，主要利用哪個邊界現象？",en:"Guiding flux with a high-μ iron core (magnetic shielding) mainly uses which boundary effect?",opts:[{zh:"磁通進入高 μ 介質時 α<sub>2</sub>→90°，幾乎被拉成平行界面而沿鐵心走"},{zh:"B 法線分量不連續"},{zh:"H 切線分量不連續"},{zh:"界面累積磁荷"}],ans:0,exp:"μ<sub>2</sub>≫μ<sub>1</sub> ⟹ α<sub>2</sub>≈90°，磁通在高 μ 介質中幾乎平行界面、<b>被導引</b>進鐵心（磁屏蔽原理）。"},
+{id:91,sec:"6-10",t:"mc",zh:"範例 6-13 中，細長棒磁鐵中心 B ≈ μ<sub>0</sub>M<sub>0</sub> 而 H ≈ 0。這代表 B/μ<sub>0</sub> 與 M 的關係為？",en:"In Example 6-13, the bar-magnet center has B ≈ μ<sub>0</sub>M<sub>0</sub> and H ≈ 0. This means B/μ<sub>0</sub> vs M is?",opts:[{zh:"B/μ<sub>0</sub> ≫ M"},{zh:"B/μ<sub>0</sub> = 0"},{zh:"B/μ<sub>0</sub> ≈ M"},{zh:"B/μ<sub>0</sub> = −M"}],ans:2,exp:"H = B/μ<sub>0</sub> − M ≈ 0 ⟹ <b>B/μ<sub>0</sub> ≈ M</b>（≈M<sub>0</sub>）。"},
+{id:92,sec:"6-10",t:"mc",zh:"棒磁鐵內部沿軸 H 與 B 方向相反，最直接的原因是？",en:"Inside a bar magnet, H and B are antiparallel along the axis. The most direct reason is?",opts:[{zh:"B 為負值"},{zh:"M 夠大，使 H = B/μ<sub>0</sub> − M 變號"},{zh:"導磁係數 μ < 0"},{zh:"電流方向相反"}],ans:1,exp:"內部 B/μ<sub>0</sub> < M<sub>0</sub> ⟹ H = B/μ<sub>0</sub> − M < 0，<b>因 M 大而與 B 反向</b>。"},
+{id:93,sec:"6-7",t:"mc",zh:"下列哪一組單位「全部」正確？[H]=A/m、[B]=Wb/m²、[μ]=H/m、[χ<sub>m</sub>]=無因次",en:"Which set of units is entirely correct? [H]=A/m, [B]=Wb/m², [μ]=H/m, [χ<sub>m</sub>]=dimensionless",opts:[{zh:"[B] 錯"},{zh:"[μ] 錯"},{zh:"[χ<sub>m</sub>] 錯"},{zh:"全部正確"}],ans:3,exp:"四者皆正確：H→A/m，B→Wb/m²(=T)，μ→H/m，χ<sub>m</sub>（與 μ<sub>r</sub>）為無因次。<b>全部正確</b>。"},
+{id:94,sec:"6-7",t:"mc",zh:"自由空間導磁係數 μ<sub>0</sub> 的單位是？",en:"The free-space permeability μ<sub>0</sub> has units of?",opts:[{zh:"H/m（亨利每公尺）"},{zh:"F/m（法拉每公尺）"},{zh:"Wb/m²"},{zh:"A/m"}],ans:0,exp:"μ = μ<sub>0</sub>μ<sub>r</sub>，μ<sub>r</sub> 無因次 ⟹ μ<sub>0</sub> 與 μ 同單位 <b>H/m</b>。（F/m 是介電係數 ε 的單位。）"},
+{id:95,sec:"6-10",t:"mc",zh:"在 a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub> 中，單位法線 a<sub>n2</sub> 的方向定義為？",en:"In a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub>, the unit normal a<sub>n2</sub> is defined as?",opts:[{zh:"由介質 1 指向介質 2"},{zh:"沿界面切線方向"},{zh:"由介質 2 向外（指向介質 1）"},{zh:"任意方向皆可"}],ans:2,exp:"課文：a<sub>n2</sub> 是「<b>由介質 2 向外</b>」的單位法線（outward from medium 2）。方向定義錯會使 J<sub>s</sub> 正負相反。"},
+{id:96,sec:"6-10",t:"mc",zh:"已知 a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub>。若改寫為 a<sub>n1</sub> × (H<sub>2</sub> − H<sub>1</sub>)（a<sub>n1</sub> 為由介質 1 向外的法線），其值為？",en:"Given a<sub>n2</sub> × (H<sub>1</sub> − H<sub>2</sub>) = J<sub>s</sub>, rewriting as a<sub>n1</sub> × (H<sub>2</sub> − H<sub>1</sub>) gives?",opts:[{zh:"等於 −J<sub>s</sub>"},{zh:"仍等於 J<sub>s</sub>"},{zh:"等於 0"},{zh:"無法判定"}],ans:1,exp:"a<sub>n1</sub> = −a<sub>n2</sub> 且 (H<sub>2</sub>−H<sub>1</sub>) = −(H<sub>1</sub>−H<sub>2</sub>)，兩個負號相消 ⟹ <b>仍等於 J<sub>s</sub></b>。"},
+{id:97,sec:"6-1",t:"mc",zh:"帶電粒子以速度 u 進入均勻磁場 B，若 u 與 B 平行，所受磁力為？",en:"A charge enters a uniform field B with u parallel to B. The magnetic force is?",opts:[{zh:"quB"},{zh:"quB/2"},{zh:"最大值"},{zh:"0（不受力）"}],ans:3,exp:"F = qu×B；u ∥ B ⟹ u×B = 0 ⟹ <b>F = 0</b>。"},
+{id:98,sec:"6-1",t:"mc",zh:"帶電粒子以速度 u 垂直射入均勻磁場 B，磁力大小為？",en:"A charge enters a uniform field B with u perpendicular to B. The magnitude of the magnetic force is?",opts:[{zh:"quB"},{zh:"0"},{zh:"qu/B"},{zh:"qB/u"}],ans:0,exp:"|F| = quB sinθ，θ=90° ⟹ |F| = <b>quB</b>（此時磁力最大，使粒子作圓周運動）。"},
+{id:99,sec:"6-1",t:"mc",zh:"帶電粒子在純磁場中作等速圓周運動，提供向心力的是？",en:"A charged particle in uniform circular motion in a pure magnetic field. The centripetal force is provided by?",opts:[{zh:"電力 qE"},{zh:"重力"},{zh:"磁力 qu×B"},{zh:"不需要任何力"}],ans:2,exp:"純磁場中 E=0，<b>磁力 qu×B 提供向心力</b>；因磁力不作功，速率不變、半徑固定。"},
+{id:100,sec:"6-7",t:"mc",zh:"若某介質的相對導磁係數 μ<sub>r</sub> = 1，則其磁化率 χ<sub>m</sub> 與磁化 M 為？",en:"If a medium has μ<sub>r</sub> = 1, then its susceptibility χ<sub>m</sub> and magnetization M are?",opts:[{zh:"χ<sub>m</sub> = 1，M = H"},{zh:"χ<sub>m</sub> = 0 且 M = 0"},{zh:"χ<sub>m</sub> = −1"},{zh:"M = μ<sub>0</sub>H"}],ans:1,exp:"μ<sub>r</sub>=1 ⟹ χ<sub>m</sub>=μ<sub>r</sub>−1=0 ⟹ M=χ<sub>m</sub>H=<b>0</b>（如真空/自由空間，無磁化）。"}
+
+];
+</script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const tabs=document.querySelectorAll('.tab');
+  const study=$('study'), quiz=$('quiz');
+  const qStart=$('qStart'), qRun=$('qRun'), qResult=$('qResult'), qBrowse=$('qBrowse');
+  const qCount=$('qCount'), qFill=$('qFill'), qBody=$('qBody');
+  const btnPrev=$('btnPrev'), btnNext=$('btnNext');
+  const bList=$('bList');
+
+  let pool=[], idx=0, answers=[];
+  const SC=s=>s==='6-1'?'s1':s==='6-7'?'s2':'s3';
+  const KEYS=['A','B','C','D','E'];
+
+  function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function showScreen(el){[qStart,qRun,qResult,qBrowse].forEach(x=>x.style.display='none');el.style.display='block';}
+  function goStart(){showScreen(qStart);}
+
+  function buildPool(src){
+    const picks=shuffle(src.slice()).slice(0,Math.min(10,src.length));
+    pool=picks.map(q=>{
+      if(q.t==='mc'){
+        const order=shuffle(q.opts.map((o,i)=>({o,i})));
+        const ansPos=order.findIndex(x=>x.i===q.ans);
+        return Object.assign({},q,{shownOpts:order.map(x=>x.o),ansPos});
+      }
+      return Object.assign({},q);
+    });
+    answers=new Array(pool.length).fill(null);
+    idx=0;
+  }
+
+  function renderQuestion(){
+    const q=pool[idx], n=pool.length;
+    qCount.textContent=`第 ${idx+1} / ${n} 題`;
+    qFill.style.width=((idx+1)/n*100)+'%';
+    let optsHtml='';
+    if(q.t==='mc'){
+      q.shownOpts.forEach((o,k)=>{
+        const en=o.en?`<span class="opt-en">${o.en}</span>`:'';
+        optsHtml+=`<button class="opt" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="body"><span>${o.zh}</span>${en}</span></button>`;
+      });
+    }else{
+      optsHtml+=`<button class="opt" data-k="t"><span class="key">○</span><span class="body"><span>是</span><span class="opt-en">True</span></span></button>`;
+      optsHtml+=`<button class="opt" data-k="f"><span class="key">✕</span><span class="body"><span>非</span><span class="opt-en">False</span></span></button>`;
+    }
+    qBody.innerHTML=`<div><span class="qtag ${SC(q.sec)}">${q.sec}</span><span class="qtype">${q.t==='mc'?'選擇題':'是非題'}</span></div>`
+      +`<div class="qtext">${q.zh}</div><div class="qtext-en">${q.en}</div><div class="opts">${optsHtml}</div>`;
+    const cur=answers[idx];
+    qBody.querySelectorAll('.opt').forEach(btn=>{
+      const val=q.t==='mc'?parseInt(btn.dataset.k):(btn.dataset.k==='t');
+      if(cur!==null&&cur===val)btn.classList.add('sel');
+      btn.addEventListener('click',()=>{
+        answers[idx]=val;
+        qBody.querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));
+        btn.classList.add('sel');
+        btnNext.disabled=false;
+      });
+    });
+    btnNext.disabled=(answers[idx]===null);
+    btnPrev.disabled=(idx===0);
+    btnNext.textContent=(idx===n-1)?'交卷看結果 ✓':'下一題 →';
+  }
+
+  function startQuiz(src){buildPool(src);showScreen(qRun);renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}
+  function nextQ(){if(idx<pool.length-1){idx++;renderQuestion();}else finishQuiz();}
+  function prevQ(){if(idx>0){idx--;renderQuestion();}}
+
+  function finishQuiz(){
+    let correct=0;const wrong=[];
+    pool.forEach((q,i)=>{
+      const a=answers[i];
+      const ok=q.t==='mc'?(a===q.ansPos):(a===q.ans);
+      if(ok)correct++;else wrong.push({q,a});
+    });
+    const n=pool.length,pct=Math.round(correct/n*100);
+    const rc=pct>=80?'var(--green)':pct>=60?'var(--amber)':'var(--red)';
+    const grade=pct===100?'🏆 滿分！靜磁場大師。':pct>=80?'⚡ 很穩，剩幾個小細節再補強就好。':pct>=60?'📘 及格邊緣，建議把錯題對應的章節再讀一次。':'🔧 再讀一次課文翻譯，重點放在 H 的定義與邊界條件。';
+    let html=`<div class="score-wrap"><div class="ring" style="--p:${pct};--rc:${rc}"><div class="inner"><div><div class="num">${correct}</div><div class="den">／ ${n} 題</div></div></div></div><div class="pct" style="color:${rc}">${pct} 分</div><div class="grade">${grade}</div></div>`;
+    if(wrong.length){
+      html+=`<div class="rev-title">📌 檢討 <span class="cnt">答錯 ${wrong.length} 題</span></div>`;
+      html+=wrong.map(({q,a})=>{
+        let yours,corr;
+        if(q.t==='mc'){yours=a===null?'（未作答）':q.shownOpts[a].zh;corr=q.shownOpts[q.ansPos].zh;}
+        else{yours=a===null?'（未作答）':(a?'是 True':'非 False');corr=q.ans?'是 True':'非 False';}
+        return `<div class="rev"><div><span class="qtag ${SC(q.sec)}">${q.sec}</span></div><div class="rq">${q.zh}</div><div class="rq-en">${q.en}</div>`
+          +`<div class="ans-line"><span class="lab">你的答案</span><span class="wrong">✕ ${yours}</span></div>`
+          +`<div class="ans-line"><span class="lab">正確答案</span><span class="right">✓ ${corr}</span></div>`
+          +`<div class="exp"><b>檢討：</b>${q.exp}</div></div>`;
+      }).join('');
+    }else{
+      html+=`<div class="allright">🎉 全部答對，完美！這三節的重點你都掌握了。</div>`;
+    }
+    html+=`<div class="btn-row"><button class="btn btn-primary" id="rNew">🎲 再抽 10 題</button></div>`;
+    html+=`<div class="btn-row">${wrong.length?'<button class="btn btn-ghost" id="rWrong">🔁 只重做這些錯題</button>':''}<button class="btn btn-ghost" id="rHome">← 回測驗首頁</button></div>`;
+    qResult.innerHTML=html;showScreen(qResult);
+    $('rNew').addEventListener('click',()=>startQuiz(QUESTIONS));
+    $('rHome').addEventListener('click',goStart);
+    const rw=$('rWrong');if(rw)rw.addEventListener('click',()=>startQuiz(wrong.map(w=>w.q)));
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function renderBrowse(f){
+    const list=f==='all'?QUESTIONS:QUESTIONS.filter(q=>q.sec===f);
+    bList.innerHTML=list.map(q=>{
+      let optsHtml='';
+      if(q.t==='mc'){
+        optsHtml=q.opts.map((o,k)=>{
+          const cor=k===q.ans;
+          const en=o.en?` <span style="color:var(--muted-2)">/ ${o.en}</span>`:'';
+          return `<div class="bopt ${cor?'cor':''}"><span class="bk">${KEYS[k]}</span><span>${o.zh}${en}</span>${cor?'<span class="tick">✓</span>':''}</div>`;
+        }).join('');
+      }else{
+        const t=q.ans===true,ff=q.ans===false;
+        optsHtml=`<div class="bopt ${t?'cor':''}"><span class="bk">○</span><span>是 True</span>${t?'<span class="tick">✓</span>':''}</div>`
+          +`<div class="bopt ${ff?'cor':''}"><span class="bk">✕</span><span>非 False</span>${ff?'<span class="tick">✓</span>':''}</div>`;
+      }
+      return `<div class="bq"><div class="bq-head"><span class="bq-n">#${q.id}</span><span class="qtag ${SC(q.sec)}">${q.sec}</span><span class="qtype">${q.t==='mc'?'選擇題':'是非題'}</span></div>`
+        +`<div class="rq">${q.zh}</div><div class="rq-en">${q.en}</div>${optsHtml}<div class="exp"><b>檢討：</b>${q.exp}</div></div>`;
+    }).join('');
+  }
+
+  // ---- wiring ----
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
+    const w=t.dataset.tab;
+    study.classList.toggle('show',w==='study');
+    quiz.classList.toggle('show',w==='quiz');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+  $('btnStart').addEventListener('click',()=>startQuiz(QUESTIONS));
+  $('btnBrowse').addEventListener('click',()=>{showScreen(qBrowse);document.querySelectorAll('.filt').forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));renderBrowse('all');});
+  $('btnBrowseBack').addEventListener('click',goStart);
+  $('btnExit').addEventListener('click',goStart);
+  btnPrev.addEventListener('click',prevQ);
+  btnNext.addEventListener('click',nextQ);
+  document.querySelectorAll('.filt').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.filt').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderBrowse(b.dataset.f);
+  }));
+
+  // ---- KaTeX render for the translation tab ----
+  function renderStudyMath(){
+    if(typeof renderMathInElement==='function'){
+      renderMathInElement(study,{
+        delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],
+        throwOnError:false
+      });
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',renderStudyMath);
+  else setTimeout(renderStudyMath,0);
+  window.addEventListener('load',renderStudyMath);
+})();
+</script>
+</body>
+</html>
